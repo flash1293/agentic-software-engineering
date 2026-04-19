@@ -263,8 +263,34 @@ h3 {
   <p class="subtitle">How frontier agents are changing the way we build software</p>
 </div>
 
-<!-- SLIDE 2: Autoregressive text completion -->
+<!-- About Me -->
 <div class="slide" data-slide="2">
+  <h2>About Me</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:820px;margin-top:1rem;">
+    <div>
+      <h3 style="margin-bottom:0.5rem;">Joe Reuter</h3>
+      <div class="dim" style="margin-bottom:1.2rem;line-height:1.8;">Tech Lead · <a href="https://elastic.co" target="_blank" style="color:var(--accent);text-decoration:none;">Elastic</a></div>
+      <div style="font-size:0.82rem;color:#8b949e;line-height:1.7;">
+        <strong style="color:#e6edf3;">Elastic</strong> is the company behind the <span style="color:#f0883e">ELK Stack</span> — Elasticsearch, Logstash, Kibana.<br><br>
+        Used by thousands of companies to search, observe, and secure their data at scale. Think full-text search, APM, SIEM, log analytics.
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:0.8rem;">Technology journey</h3>
+      <div style="font-size:0.84rem;line-height:2;">
+        <div><span style="color:#58a6ff;font-family:monospace;font-size:0.9em;">TypeScript · React · Node.js</span></div>
+        <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;margin-bottom:0.5rem;">Frontend in Kibana — my main thing</div>
+        <div><span style="color:#f0883e;font-family:monospace;font-size:0.9em;">Java</span></div>
+        <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;margin-bottom:0.5rem;">Elasticsearch core &amp; internals</div>
+        <div><span style="color:#7ee787;font-family:monospace;font-size:0.9em;">Go</span></div>
+        <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;">Data shippers &amp; agents</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: Autoregressive text completion -->
+<div class="slide" data-slide="3">
   <span class="part-label">Foundation — Step 1 of 3</span>
   <h2>It Started as Next-Token Prediction</h2>
   <p class="subtitle">The model predicts the most likely next token, then repeats. No planning, no memory — just statistics over text.</p>
@@ -848,7 +874,7 @@ h3 {
   <p class="subtitle">Let's discuss model costs, agent hallucinations, and what's actually working.</p>
 </div>
 
-<div class="slide-number" id="slideNumber">1 / 19</div>
+<div class="slide-number" id="slideNumber">1 / 20</div>
 
 <script>
 const slides = document.querySelectorAll('.slide');
