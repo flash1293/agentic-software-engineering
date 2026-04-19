@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Software Engineering</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --accent: #58a6ff;
+  --accent2: #7ee787;
+  --warn: #f0883e;
+  --border: #30363d;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 8vh 10vw;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.slide.active {
+  display: flex;
+  opacity: 1;
+}
+
+.slide-number {
+  position: fixed;
+  bottom: 2.5vh;
+  right: 3vw;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  z-index: 10;
+}
+
+.part-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.2em 0.7em;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.4;
+  max-width: 680px;
+}
+
+.points {
+  list-style: none;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 700px;
+}
+
+.points li {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.5;
+  padding-left: 1.4em;
+  position: relative;
+}
+
+.points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.points.green li::before { background: var(--accent2); }
+.points.orange li::before { background: var(--warn); }
+
+.emphasis {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.emphasis-green {
+  color: var(--accent2);
+  font-weight: 500;
+}
+
+.emphasis-warn {
+  color: var(--warn);
+  font-weight: 500;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vw;
+  margin-top: 2rem;
+  max-width: 900px;
+}
+
+.col h3 {
+  margin-bottom: 0.8rem;
+}
+
+.col .points {
+  margin-top: 0.8rem;
+}
+
+.diagram {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+  line-height: 1.8;
+  color: var(--accent2);
+  max-width: 750px;
+  overflow-x: auto;
+}
+
+.diagram .arrow { color: var(--text-dim); }
+.diagram .label { color: var(--warn); }
+.diagram .dim { color: var(--text-dim); }
+
+.takeaway {
+  margin-top: 1.8rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  line-height: 1.5;
+  color: var(--text-dim);
+  max-width: 650px;
+}
+
+.takeaway strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.stats {
+  display: flex;
+  gap: 3vw;
+  margin-top: 2rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat .number {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.stat .label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 0.3rem;
+}
+
+.title-slide {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title-slide h1 {
+  max-width: 800px;
+}
+
+.title-slide .subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.nav-hint {
+  position: fixed;
+  bottom: 2.5vh;
+  left: 3vw;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .slide { padding: 6vh 7vw; }
+  .two-col { grid-template-columns: 1fr; gap: 2rem; }
+  .stats { flex-direction: column; gap: 1.5rem; }
+}
+
+.slide:has(svg) {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+}
+</style>
+</head>
+<body>
+
+<div class="nav-hint">arrow keys to navigate</div>
+
+<!-- SLIDE 1: Title -->
+<div class="slide title-slide active" data-slide="1">
+  <span class="part-label">Meetup Talk</span>
+  <h1>Agentic Software Engineering</h1>
+  <p class="subtitle">How frontier agents are changing the way we build software</p>
+</div>
+
+<!-- SLIDE 2: Autoregressive text completion -->
+<div class="slide" data-slide="2">
+  <span class="part-label">Foundation — Step 1 of 3</span>
+  <h2>It Started as Next-Token Prediction</h2>
+  <p class="subtitle">The model predicts the most likely next token, then repeats. No planning, no memory — just statistics over text.</p>
+  <div class="diagram" style="max-width:680px">
+    <div><span class="dim">Prompt:</span>  <span style="color:#e6edf3">"def is_even(n):\n    return "</span></div>
+    <div style="margin-top:0.8rem"><span class="dim">Model predicts next token:</span></div>
+    <div style="margin-top:0.4rem; padding-left:1.2rem;">
+      <span style="color:#7ee787">n % 2 == 0</span>  <span class="dim">← 71%</span><br/>
+      <span style="color:#8b949e">n % 2</span>  <span class="dim">← 18%</span><br/>
+      <span style="color:#8b949e">not n % 2</span>  <span class="dim">← 8%</span>
+    </div>
+    <div style="margin-top:0.8rem"><span class="dim">Then repeats for the next token, and the next…</span></div>
+  </div>
+  <div class="takeaway"><strong>Limitation:</strong> no reasoning, no planning. Ask "is 17 prime?" and it pattern-matches its way to an answer — right or wrong. Good for autocomplete; not enough for complex tasks.</div>
+</div>
+
+<!-- SLIDE 3: Thinking -->
+<div class="slide" data-slide="3">
+  <span class="part-label">Foundation — Step 2 of 3</span>
+  <h2>Add Thinking: Reason Before Answering</h2>
+  <p class="subtitle">Chain-of-thought prompting (and later o1-style reasoning) lets the model plan before committing to an answer. Huge jump in capability.</p>
+  <div class="diagram" style="max-width:680px">
+    <div><span class="dim">Task:</span>  <span style="color:#e6edf3">"This test fails intermittently. Why?"</span></div>
+    <div style="margin-top:0.8rem"><span class="label">&lt;thinking&gt;</span></div>
+    <div style="padding-left:1.2rem; margin-top:0.3rem; color:#8b949e; font-size:0.9em; line-height:1.6">
+      The test touches a shared cache...<br/>
+      Two threads could write simultaneously...<br/>
+      Race condition on cache.set() — not thread-safe...<br/>
+      Fix: add a lock, or use an atomic operation.
+    </div>
+    <div style="margin-top:0.3rem"><span class="label">&lt;/thinking&gt;</span></div>
+    <div style="margin-top:0.6rem; color:#7ee787">"The test has a race condition on the shared cache. Add a threading.Lock around cache.set()."</div>
+  </div>
+  <div class="takeaway"><strong>What changed:</strong> the model explores multiple hypotheses silently before answering. Longer tasks, fewer confident wrong answers. This is where models got genuinely useful for engineering work.</div>
+</div>
+
+<!-- SLIDE 4: Tool calls -->
+<div class="slide" data-slide="4">
+  <span class="part-label">Foundation — Step 3 of 3</span>
+  <h2>Add Tool Calls: Act in the World</h2>
+  <p class="subtitle">The model can now pause, call a tool, observe the result, and continue reasoning. It's no longer just text in, text out.</p>
+  <div class="diagram" style="max-width:680px">
+    <div><span class="dim">Task:</span>  <span style="color:#e6edf3">"Run the tests and fix any failures."</span></div>
+    <div style="margin-top:0.8rem">
+      <span class="label">→ tool:</span> <span style="color:#e6edf3">run_shell("pytest tests/")</span>
+    </div>
+    <div style="padding-left:1.2rem; color:#8b949e; font-size:0.9em; margin-top:0.3rem">
+      FAILED test_user.py::test_login — AssertionError: 401
+    </div>
+    <div style="margin-top:0.5rem">
+      <span class="label">→ tool:</span> <span style="color:#e6edf3">read_file("src/auth.py")</span>
+    </div>
+    <div style="padding-left:1.2rem; color:#8b949e; font-size:0.9em; margin-top:0.3rem">
+      …token expiry check has an off-by-one on seconds…
+    </div>
+    <div style="margin-top:0.5rem">
+      <span class="label">→ tool:</span> <span style="color:#e6edf3">edit_file("src/auth.py", fix)</span>
+    </div>
+    <div style="margin-top:0.5rem">
+      <span class="label">→ tool:</span> <span style="color:#e6edf3">run_shell("pytest tests/")</span>  <span style="color:#7ee787">✓ all passed</span>
+    </div>
+  </div>
+  <div class="takeaway"><strong>= Agent:</strong> think → act → observe → repeat. This loop is what makes it possible to hand off a 30-minute task and come back to a PR.</div>
+</div>
+
+<!-- Part 1: New Reality -->
+<div class="slide" data-slide="5">
+  <span class="part-label">Part 1 — The New Reality</span>
+  <h2>The Models Finally Got Good</h2>
+  <p class="subtitle">We've moved from autocomplete to reasoning agents. The best way to measure that? <span class="emphasis">Feedback loop length</span> — how long an agent can work on its own before it needs you.</p>
+  <ul class="points">
+    <li>Longer feedback loop = more complex tasks the agent can handle</li>
+    <li>We went from autocompleting a line to 30-minute unsupervised tasks</li>
+  </ul>
+  <div class="takeaway"><strong>Key shift:</strong> agents handle execution now. Humans provide direction. But we still read every line — we just don't write boilerplate anymore.</div>
+</div>
+
+<!-- METR Chart -->
+<div class="slide" data-slide="6">
+  <span class="part-label">Part 1 — The New Reality</span>
+  <h2>Feedback Loop Length Is Everything</h2>
+  <p class="subtitle" style="margin-bottom:0.6rem">METR benchmarks how long a model can work on a research task before needing help — doubling every ~7 months. (<a href="https://metr.org" target="_blank" style="color:var(--accent);text-decoration:none;">metr.org</a>)</p>
+  <div style="width:100%;max-width:760px;">
+    <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+      <defs>
+        <marker id="none" markerWidth="0" markerHeight="0"/>
+      </defs>
+      <!-- Plot area: x 80..740, y 10..270 -->
+      <rect x="80" y="10" width="660" height="260" rx="4" fill="#161b22" stroke="#30363d"/>
+      <!-- Horizontal grid lines (log scale, 6 bands: 1min=270, 10min=218, 1hr=166, 10hr=114, 100hr=62, 1wk=10) -->
+      <line x1="80" y1="218" x2="740" y2="218" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="166" x2="740" y2="166" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="114" x2="740" y2="114" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="62"  x2="740" y2="62"  stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="10"  x2="740" y2="10"  stroke="#30363d" stroke-dasharray="3,4"/>
+      <!-- Y labels -->
+      <text x="76" y="274" fill="#8b949e" font-size="10" text-anchor="end" font-family="Inter,sans-serif">1 min</text>
+      <text x="76" y="222" fill="#8b949e" font-size="10" text-anchor="end" font-family="Inter,sans-serif">10 min</text>
+      <text x="76" y="170" fill="#8b949e" font-size="10" text-anchor="end" font-family="Inter,sans-serif">1 hr</text>
+      <text x="76" y="118" fill="#8b949e" font-size="10" text-anchor="end" font-family="Inter,sans-serif">10 hr</text>
+      <text x="76" y="66"  fill="#8b949e" font-size="10" text-anchor="end" font-family="Inter,sans-serif">100 hr</text>
+      <text x="76" y="16"  fill="#8b949e" font-size="10" text-anchor="end" font-family="Inter,sans-serif">1 week</text>
+      <!-- X labels: 2019=110, 2022=308, 2024=440, 2025=572, 2026=704 -->
+      <text x="110" y="292" fill="#8b949e" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">2019</text>
+      <text x="308" y="292" fill="#8b949e" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">2022</text>
+      <text x="374" y="292" fill="#8b949e" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">2023</text>
+      <text x="440" y="292" fill="#8b949e" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">2024</text>
+      <text x="572" y="292" fill="#8b949e" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">2025</text>
+      <text x="704" y="292" fill="#8b949e" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">2026</text>
+
+      <!--
+        Trend line through data points (log-linear fit).
+        Points (cx, cy): GPT-2(110,268) 3.5(308,255) 4(374,240) 4o(440,230) 3.5S(452,224)
+                         o1(506,178) 3.7(528,166) o3(550,152) Opus4.5(638,112) Opus4.6(704,84)
+        Linear fit in log-y space: y_log = a*x + b
+        Using GPT-2 and Opus4.6 as anchors: slope = (84-268)/(704-110) = -184/594 ≈ -0.31
+      -->
+      <line x1="110" y1="268" x2="704" y2="84" stroke="#58a6ff" stroke-width="1.5" opacity="0.5"/>
+      <!-- Confidence band -->
+      <polygon points="110,258 704,68 704,100 110,278" fill="#58a6ff" opacity="0.07"/>
+
+      <!-- GPT-2 2019 ~1 min -->
+      <circle cx="110" cy="268" r="4" fill="#8b949e"/>
+      <text x="110" y="283" fill="#8b949e" font-size="9" text-anchor="middle" font-family="Inter,sans-serif">GPT-2</text>
+
+      <!-- GPT-3.5 2022 ~3 min -->
+      <circle cx="308" cy="255" r="4" fill="#8b949e"/>
+      <text x="308" y="283" fill="#8b949e" font-size="9" text-anchor="middle" font-family="Inter,sans-serif">3.5</text>
+
+      <!-- GPT-4 2023 ~7 min -->
+      <circle cx="374" cy="240" r="4" fill="#8b949e"/>
+      <text x="374" y="283" fill="#8b949e" font-size="9" text-anchor="middle" font-family="Inter,sans-serif">4</text>
+
+      <!-- GPT-4o May 2024 ~12 min -->
+      <circle cx="440" cy="230" r="4" fill="#58a6ff"/>
+      <text x="440" y="283" fill="#8b949e" font-size="9" text-anchor="middle" font-family="Inter,sans-serif">4o</text>
+
+      <!-- Claude 3.5 Sonnet Jun 2024 ~18 min -->
+      <circle cx="452" cy="224" r="4" fill="#58a6ff"/>
+      <text x="469" y="222" fill="#8b949e" font-size="9" text-anchor="start" font-family="Inter,sans-serif">3.5S</text>
+
+      <!-- o1 Dec 2024 ~1 hr -->
+      <circle cx="506" cy="178" r="5" fill="#f0883e"/>
+      <text x="516" y="176" fill="#f0883e" font-size="9" font-family="Inter,sans-serif" font-weight="600" dy="3">o1</text>
+
+      <!-- Claude 3.7 Feb 2025 ~1.5 hr -->
+      <circle cx="528" cy="166" r="5" fill="#f0883e"/>
+      <text x="538" y="164" fill="#f0883e" font-size="9" font-family="Inter,sans-serif" font-weight="600" dy="3">3.7</text>
+
+      <!-- o3 Apr 2025 ~3 hr -->
+      <circle cx="550" cy="152" r="5" fill="#f0883e"/>
+      <text x="560" y="150" fill="#f0883e" font-size="9" font-family="Inter,sans-serif" font-weight="600" dy="3">o3</text>
+
+      <!-- Opus 4.5 Nov 2025 ~8 hr -->
+      <circle cx="638" cy="120" r="5" fill="#7ee787"/>
+      <text x="648" y="118" fill="#7ee787" font-size="9" font-family="Inter,sans-serif" font-weight="600" dy="3">Opus 4.5</text>
+
+      <!-- Opus 4.6 Feb 2026 ~20 hr -->
+      <circle cx="704" cy="84" r="5" fill="#7ee787"/>
+      <text x="714" y="82" fill="#7ee787" font-size="9" font-family="Inter,sans-serif" font-weight="600" dy="3">Opus 4.6</text>
+
+      <!-- Source -->
+      <text x="740" y="312" fill="#8b949e" font-size="8" text-anchor="end" font-family="Inter,sans-serif">Source: METR (metr.org) — 50% task-completion time horizon</text>
+
+      <!-- Era boundary lines -->
+      <line x1="740" y1="235" x2="898" y2="235" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="740" y1="166" x2="898" y2="166" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- Era 1: Autocomplete (bottom, gray) -->
+      <line x1="744" y1="236" x2="744" y2="269" stroke="#8b949e" stroke-width="1.2"/>
+      <line x1="744" y1="236" x2="749" y2="236" stroke="#8b949e" stroke-width="1.2"/>
+      <line x1="744" y1="269" x2="749" y2="269" stroke="#8b949e" stroke-width="1.2"/>
+      <text x="754" y="250" fill="#8b949e" font-size="10" font-family="Inter,sans-serif" font-weight="600">Autocomplete</text>
+      <text x="754" y="263" fill="#8b949e" font-size="9" font-family="Inter,sans-serif">write a line at a time</text>
+
+      <!-- Era 2: Supervised (middle, blue) -->
+      <line x1="744" y1="167" x2="744" y2="234" stroke="#58a6ff" stroke-width="1.2"/>
+      <line x1="744" y1="167" x2="749" y2="167" stroke="#58a6ff" stroke-width="1.2"/>
+      <line x1="744" y1="234" x2="749" y2="234" stroke="#58a6ff" stroke-width="1.2"/>
+      <text x="754" y="194" fill="#58a6ff" font-size="10" font-family="Inter,sans-serif" font-weight="600">Supervised agent</text>
+      <text x="754" y="207" fill="#58a6ff" font-size="9" font-family="Inter,sans-serif">tell it what to do,</text>
+      <text x="754" y="219" fill="#58a6ff" font-size="9" font-family="Inter,sans-serif">watch it work</text>
+
+      <!-- Era 3: Plan & delegate (top, green) -->
+      <line x1="744" y1="84" x2="744" y2="165" stroke="#7ee787" stroke-width="1.2"/>
+      <line x1="744" y1="84" x2="749" y2="84" stroke="#7ee787" stroke-width="1.2"/>
+      <line x1="744" y1="165" x2="749" y2="165" stroke="#7ee787" stroke-width="1.2"/>
+      <text x="754" y="115" fill="#7ee787" font-size="10" font-family="Inter,sans-serif" font-weight="600">Autonomous agent</text>
+      <text x="754" y="128" fill="#7ee787" font-size="9" font-family="Inter,sans-serif">draft a plan, hand off,</text>
+      <text x="754" y="141" fill="#7ee787" font-size="9" font-family="Inter,sans-serif">come back to a PR</text>
+    </svg>
+  </div>
+</div>
+
+<!-- Part 2: The Lifecycle -->
+
+<!-- GitHub Switchboard -->
+<div class="slide" data-slide="7">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>The GitHub Switchboard</h2>
+  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate.</p>
+  <div style="width:100%;max-width:900px;">
+    <!-- Top row: inputs -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
+      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">New Idea</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">User Feedback</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #f0883e;border-radius:8px;font-size:0.88rem;color:#f0883e;text-align:center;">Production Error</div>
+    </div>
+    <!-- Agent tags under inputs -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
+      <div style="font-size:0.7rem;color:#8b949e;text-align:center;">↓ Planning Agent scopes the work</div>
+      <div style="font-size:0.7rem;color:#8b949e;text-align:center;">↓ Planning Agent scopes the work</div>
+      <div style="font-size:0.7rem;color:#f0883e;text-align:center;">↓ Triage Agent clusters logs, creates Issue</div>
+    </div>
+    <!-- Converging arrows -->
+    <div style="text-align:center;color:#8b949e;font-size:0.9rem;line-height:1;margin-bottom:0.25rem;">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
+    <!-- Main flow + human involvement side by side -->
+    <div style="display:grid;grid-template-columns:1fr auto;gap:1.2rem;align-items:start;">
+      <!-- Flow column -->
+      <div style="display:flex;flex-direction:column;gap:0.25rem;align-items:stretch;">
+        <div style="padding:0.65rem 1rem;border:2px solid #58a6ff;border-radius:8px;color:#58a6ff;font-weight:600;text-align:center;">
+          GitHub Issue <span style="font-size:0.72rem;font-weight:400;color:#8b949e;">&nbsp;— auto-created or manual</span>
+        </div>
+        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:1px solid #58a6ff;border-radius:8px;color:#e6edf3;text-align:center;">
+          Planning / Spec
+          <div style="font-size:0.7rem;color:#8b949e;margin-top:0.2rem;">agent drafts spec → human approves</div>
+        </div>
+        <div style="text-align:center;color:#7ee787;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:1px solid #7ee787;border-radius:8px;color:#7ee787;font-weight:600;text-align:center;">Coding Agent</div>
+        <div style="text-align:center;color:#f0883e;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:2px solid #f0883e;border-radius:8px;color:#f0883e;font-weight:600;text-align:center;">Pull Request</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.25rem;">
+          <div style="padding:0.35rem 0.6rem;border:1px solid #58a6ff;border-radius:6px;font-size:0.72rem;color:#58a6ff;text-align:center;">CodeRabbit — static review</div>
+          <div style="padding:0.35rem 0.6rem;border:1px solid #7ee787;border-radius:6px;font-size:0.72rem;color:#7ee787;text-align:center;">Exploratory Tests — dynamic</div>
+        </div>
+      </div>
+      <!-- Human involvement column -->
+      <div style="display:flex;flex-direction:column;gap:0.3rem;width:195px;padding-top:3.6rem;">
+        <div style="padding:0.5rem 0.7rem;border:1px solid #58a6ff;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#58a6ff;font-weight:600;">Human: very involved</div>
+          <div style="color:#8b949e;">Architecture &amp; design</div>
+        </div>
+        <div style="height:0.8rem;"></div>
+        <div style="padding:0.5rem 0.7rem;border:1px solid #7ee787;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#7ee787;font-weight:600;">Human: less involved</div>
+          <div style="color:#8b949e;">Review &amp; steer</div>
+        </div>
+        <div style="height:0.8rem;"></div>
+        <div style="padding:0.5rem 0.7rem;border:1px solid #f0883e;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#f0883e;font-weight:600;">Human: quality gate</div>
+          <div style="color:#8b949e;">Approve or reject</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway" style="margin-top:0.6rem"><strong>Pattern:</strong> agents handle discovery, drafting, and first-pass review. Humans set direction and hold the quality gate.</div>
+</div>
+
+<!-- Planning Before Code -->
+<div class="slide" data-slide="8">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>Planning Before Code</h2>
+  <p class="subtitle">Agree on <em>what</em> to build before any code is written. <span class="emphasis">OpenSpec</span> is a lightweight framework that structures this as a folder of Markdown artifacts.</p>
+  <div class="two-col" style="gap:3vw;margin-top:1rem;max-width:900px;">
+    <div class="col">
+      <h3>The workflow</h3>
+      <div class="diagram" style="margin-top:0.5rem;font-size:0.8rem;line-height:1.75;">
+        <div><span class="label">/opsx:propose dark-mode</span></div>
+        <div class="dim" style="padding-left:1em">→ openspec/changes/dark-mode/</div>
+        <div class="dim" style="padding-left:2em">proposal.md  ← why &amp; what</div>
+        <div class="dim" style="padding-left:2em">specs/       ← requirements</div>
+        <div class="dim" style="padding-left:2em">design.md    ← approach</div>
+        <div class="dim" style="padding-left:2em">tasks.md     ← checklist</div>
+        <div style="margin-top:0.5rem" class="dim">You review and refine each artifact</div>
+        <div class="dim">with the agent until it's locked.</div>
+        <div style="margin-top:0.5rem"><span class="label">/opsx:apply</span> <span class="dim">→ agent implements all tasks</span></div>
+        <div><span class="label">/opsx:archive</span> <span class="dim">→ spec merged into codebase</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--accent2)">specs/dark-mode-spec.md</h3>
+      <div class="diagram" style="margin-top:0.5rem;font-size:0.76rem;line-height:1.65;">
+        <div><span class="label">### Requirement: Theme toggle</span></div>
+        <div class="dim">- SHALL render a toggle in the top-right header</div>
+        <div class="dim">- SHALL apply the new theme within 50ms</div>
+        <div class="dim">- SHALL persist choice to localStorage</div>
+        <div style="margin-top:0.5rem"><span class="label">#### Scenario: Enable dark mode</span></div>
+        <div class="dim">- GIVEN the user is on any page</div>
+        <div class="dim">- WHEN they click the dark mode toggle</div>
+        <div class="dim">- THEN the theme switches within 50ms</div>
+        <div class="dim">- AND the preference is saved</div>
+        <div style="margin-top:0.5rem"><span class="label">#### Scenario: Page reload</span></div>
+        <div class="dim">- GIVEN dark mode was previously set</div>
+        <div class="dim">- WHEN the page reloads</div>
+        <div class="dim">- THEN dark mode is applied before first render</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway"><strong>Why this works:</strong> the spec is the contract between you and the agent. Changing a requirement in Markdown costs seconds. Changing it after 200 lines of generated code costs hours.</div>
+</div>
+
+<!-- Bottleneck Shift -->
+<div class="slide" data-slide="9">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>The Bottleneck Moved</h2>
+  <p class="subtitle" style="margin-bottom:1rem">Agents cut coding time roughly in half. That's great — but it just exposed the next bottleneck. Every stage needs to come down.</p>
+
+  <div style="width:100%;max-width:820px;">
+    <!-- Header row -->
+    <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.4rem;font-size:0.75rem;color:#8b949e;text-align:center;">
+      <div></div>
+      <div>Ideation &amp;<br>Planning</div>
+      <div>Coding</div>
+      <div>Validation &amp;<br>Review</div>
+      <div>Deploy &amp;<br>Monitor</div>
+      <div>Triage &amp;<br>Fix</div>
+    </div>
+
+    <!-- Before row -->
+    <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;margin-bottom:0.5rem;">
+      <div style="font-size:0.78rem;color:#8b949e;font-weight:600;">Before agents</div>
+      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <!-- Coding was the bottleneck — highlighted orange, tallest -->
+      <div style="background:#f0883e22;border:2px solid #f0883e;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#f0883e;font-weight:600;">⚠ bottleneck</div>
+      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+    </div>
+
+    <!-- After row -->
+    <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;margin-bottom:0.8rem;">
+      <div style="font-size:0.78rem;color:#8b949e;font-weight:600;">With agents now</div>
+      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <!-- Coding got fast — green, small -->
+      <div style="background:#7ee78722;border:1px solid #7ee787;border-radius:4px;height:1.1rem;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#7ee787;">~2× faster</div>
+      <!-- Validation is the new bottleneck -->
+      <div style="background:#f0883e22;border:2px solid #f0883e;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#f0883e;font-weight:600;">⚠ bottleneck</div>
+      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+    </div>
+
+    <!-- Agent effectiveness row -->
+    <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;">
+      <div style="font-size:0.78rem;color:#8b949e;font-weight:600;">Agent<br>effectiveness</div>
+      <div style="background:#58a6ff18;border:1px solid #58a6ff66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#58a6ff;">partial</div>
+      <div style="background:#7ee78733;border:1px solid #7ee787;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#7ee787;font-weight:600;">strong ✓</div>
+      <div style="background:#58a6ff18;border:1px solid #58a6ff66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#58a6ff;">emerging</div>
+      <div style="background:#30363d;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#8b949e;">early</div>
+      <div style="background:#58a6ff18;border:1px solid #58a6ff66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#58a6ff;">partial</div>
+    </div>
+  </div>
+
+  <div class="takeaway" style="margin-top:0.8rem"><strong>The goal:</strong> push every column down, not just coding. Agents are genuinely strong there today. Validation, triage, and planning are next — but we're not there yet.</div>
+</div>
+
+<!-- Validation Bottleneck -->
+<div class="slide" data-slide="10">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>The Validation Bottleneck</h2>
+  <p class="subtitle">Coding speed is no longer the bottleneck. Reviewing is. The bottleneck just moved.</p>
+  <ul class="points orange">
+    <li>We can produce code <span class="emphasis-warn">faster than we can validate it</span></li>
+    <li><span class="emphasis">CodeRabbit</span> on every PR — automated sanity checks, style, logic issues</li>
+    <li>But automated review isn't enough — humans are still the quality gate</li>
+    <li>The review burden is now the constraint on velocity</li>
+  </ul>
+  <div class="takeaway"><strong>Reality:</strong> you're not "writing less." You're reviewing more. The skill is shifting from syntax to judgment.</div>
+</div>
+
+<!-- Exploratory Testing -->
+<div class="slide" data-slide="10">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>Agentic Exploratory Testing</h2>
+  <p class="subtitle">To speed up validation, we're using agents for exploratory testing — beyond the traditional testing pyramid.</p>
+  <ul class="points green">
+    <li>Agent reads the PR diff and documentation</li>
+    <li>Agent reasons about which UI components are affected</li>
+    <li>Agent scripts <span class="emphasis-green">Playwright</span> on the fly to test those paths</li>
+    <li>Agent "looks" at screenshots to verify behavior</li>
+  </ul>
+  <div class="takeaway"><strong>Key difference:</strong> not a fixed test suite. It's a flexible reasoner exploring what changed. Blurs the line between testing and synthetics monitoring.</div>
+</div>
+
+<!-- Dev meets Ops -->
+<div class="slide" data-slide="11">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>Dev Meets Ops</h2>
+  <p class="subtitle">The loop closes itself. A production error becomes a GitHub Issue becomes a PR — with minimal human initiation.</p>
+  <div class="diagram" style="max-width:780px;margin-top:1rem;font-size:0.88rem;line-height:1.9;">
+    <div><span class="label">1. Discover:</span> <span class="dim">ES|QL CATEGORIZE clusters millions of logs → ranked error patterns</span></div>
+    <div><span class="label">2. Investigate:</span> <span class="dim">Triage Agent runs a protocol-driven investigation — queries telemetry, checks git history, correlates stack traces</span></div>
+    <div><span class="label">3. File:</span> <span class="dim">Agent creates a GitHub Issue with root cause, affected versions, and a suggested fix</span></div>
+    <div><span class="label">4. Fix:</span> <span class="dim">Coding Agent picks up the issue, drafts a PR</span></div>
+    <div><span class="label">5. Validate:</span> <span class="dim">CodeRabbit + Exploratory Tests run on the PR</span></div>
+    <div><span class="label">6. Ship:</span> <span style="color:#7ee787;">Human approves → merged → deployed</span></div>
+  </div>
+  <div class="takeaway"><strong>Real example (elastic.co):</strong> a sporadic TypeError in Kibana's Streams UI was found, root-caused to a race condition, and reported with a fix suggestion — fully autonomously. The engineer only entered the loop to review the PR. <a href="https://www.elastic.co/observability-labs/blog/automated-error-triaging" target="_blank" style="color:var(--accent);text-decoration:none;">Read the full write-up →</a></div>
+</div>
+
+<!-- Part 3: The Stack -->
+
+<!-- The Orchestration Layer -->
+<div class="slide" data-slide="12">
+  <span class="part-label">Part 3 — The Stack</span>
+  <h2>You Are the Orchestration Layer</h2>
+  <p class="subtitle">Each agent runs its own think→act→observe loop independently. You switch between them — assigning tasks, reviewing outputs, steering direction.</p>
+  <div class="two-col" style="gap:3vw;margin-top:1.2rem;max-width:860px;">
+    <div class="col">
+      <h3>How it works today</h3>
+      <ul class="points" style="margin-top:0.5rem;">
+        <li><span class="emphasis">OpenCode</span> runs in each TMux pane — one agent per task/branch</li>
+        <li><span class="emphasis">TMux</span> is the session manager: persistent, switchable, parallel</li>
+        <li>Assign Agent A a 30-min task → switch pane → assign Agent B → come back, review, correct → repeat</li>
+        <li>You're the scheduler; agents are the workers</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>The next level</h3>
+      <ul class="points green" style="margin-top:0.5rem;">
+        <li><a href="https://gastown.dev" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">Gastown</a> (by Steve Yegge) — agents orchestrate agents: a "Mayor" agent creates convoys, assigns tasks to worker agents, tracks work in git-backed beads</li>
+        <li>You describe the goal at a high level; Gastown breaks it into a multi-agent effort and coordinates execution</li>
+        <li>Still early — but the direction is clear: the human moves one more level up from execution</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway"><strong>Mental model:</strong> TMux is your cockpit. Each pane is an agent in flight. You're air traffic control — not the pilot.</div>
+</div>
+
+<!-- How Token Pricing Works -->
+<div class="slide" data-slide="13">
+  <span class="part-label">Part 3 — The Stack</span>
+  <h2>How You Actually Pay for Models</h2>
+  <p class="subtitle">Forget subscriptions — API pricing is per token. A token is roughly ¾ of a word. You pay separately for what you send in and what the model generates.</p>
+  <div style="width:100%;max-width:820px;margin-top:1.2rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+      <!-- Left: concept -->
+      <div>
+        <h3 style="margin-bottom:0.7rem;">The two meters</h3>
+        <div class="diagram" style="font-size:0.82rem;line-height:1.8;">
+          <div><span class="label">Input tokens</span> <span class="dim">— everything you send:</span></div>
+          <div class="dim" style="padding-left:1em;">system prompt + conversation history</div>
+          <div class="dim" style="padding-left:1em;">+ files, specs, context you inject</div>
+          <div style="margin-top:0.5rem"><span class="label">Output tokens</span> <span class="dim">— what the model writes:</span></div>
+          <div class="dim" style="padding-left:1em;">thinking tokens (if reasoning model)</div>
+          <div class="dim" style="padding-left:1em;">+ actual response / generated code</div>
+          <div style="margin-top:0.8rem;color:#f0883e;font-size:0.8rem;">⚠ Output tokens cost 3–5× more than input.<br>Long reasoning chains get expensive fast.</div>
+        </div>
+      </div>
+      <!-- Right: example -->
+      <div>
+        <h3 style="margin-bottom:0.7rem;">Example: one coding task</h3>
+        <div class="diagram" style="font-size:0.82rem;line-height:1.8;">
+          <div class="dim">10 000 input tokens (context + spec)</div>
+          <div class="dim">+ 2 000 output tokens (code + explanation)</div>
+          <div style="border-top:1px solid #30363d;margin:0.5rem 0;"></div>
+          <div><span class="dim">Opus 4.6: </span><span style="color:#f0883e">$0.05 + $0.05 = $0.10</span></div>
+          <div><span class="dim">GLM 5.1:  </span><span style="color:#7ee787">$0.0095 + $0.0063 = ~$0.016</span></div>
+          <div><span class="dim">Step Flash:</span><span style="color:#58a6ff"> $0.001 + $0.0006 = ~$0.002</span></div>
+          <div style="margin-top:0.8rem;color:#8b949e;font-size:0.78rem;">Subscription plans flatten this — but they're<br>subsidized and won't stay cheap. Budget per-token.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Model Economics -->
+<div class="slide" data-slide="14">
+  <span class="part-label">Part 3 — The Stack</span>
+  <h2>Model Economics</h2>
+  <p class="subtitle">Match the model to the task. Prices via <a href="https://openrouter.ai" target="_blank" style="color:var(--accent);text-decoration:none;">OpenRouter</a> (per million tokens, input / output).</p>
+  <div class="two-col" style="grid-template-columns: 1fr 1fr 1fr; gap: 2vw; margin-top:1rem;">
+    <div class="col">
+      <h3><a href="https://openrouter.ai/anthropic/claude-opus-4-6" target="_blank" style="color:var(--warn);text-decoration:none;">Opus 4.6</a></h3>
+      <div style="font-size:0.8rem;color:#f0883e;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$5 in / $25 out per 1M tokens</div>
+      <ul class="points orange">
+        <li>Most capable model right now</li>
+        <li>Architecture &amp; planning</li>
+        <li>High-level reasoning</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3><a href="https://openrouter.ai/z-ai/glm-5.1" target="_blank" style="color:var(--accent2);text-decoration:none;">GLM 5.1</a></h3>
+      <div style="font-size:0.8rem;color:#7ee787;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.95 in / $3.15 out per 1M tokens</div>
+      <ul class="points green">
+        <li>Open-source (Z.ai)</li>
+        <li>Coding &amp; triage</li>
+        <li>More than capable for the actual work</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3><a href="https://openrouter.ai/stepfun/step-3.5-flash" target="_blank" style="color:var(--accent);text-decoration:none;">Step 3.5 Flash</a></h3>
+      <div style="font-size:0.8rem;color:#58a6ff;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.10 in / $0.30 out per 1M tokens</div>
+      <ul class="points">
+        <li>~50× cheaper than Opus on output</li>
+        <li>MoE, 196B params, 11B active</li>
+        <li>Great for high-volume loops</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway"><strong>Strategy:</strong> use Opus for architecture and planning, GLM or Step Flash for the actual coding. The cost difference is an order of magnitude — and you won't notice the quality difference on most tasks.</div>
+</div>
+
+<!-- Context Is the New Code -->
+<div class="slide" data-slide="14">
+  <span class="part-label">Part 3 — The Stack</span>
+  <h2>Context Is the New Code</h2>
+  <p class="subtitle">The model is only as good as what you feed it. The real work is curating context.</p>
+  <ul class="points">
+    <li><span class="emphasis">Markdown "Skills"</span> — reusable capabilities. Example: <code>analyze_user_feedback.md</code> knows how to summarize thousands of support tickets</li>
+    <li>Shared repos with helper scripts that fetch from <span class="emphasis">BigQuery</span>, telemetry, web search — all into the context window</li>
+    <li>PMs use Cursor + agents for competitive analysis, feature prioritization — not just engineers anymore</li>
+  </ul>
+  <div class="takeaway"><strong>Pattern:</strong> define the skills, pull in the data, agent connects the dots. Context engineering is the new software engineering.</div>
+</div>
+
+<!-- Part 4: Human Toll -->
+
+<!-- Death of The Zone -->
+<div class="slide" data-slide="15">
+  <span class="part-label">Part 4 — The Human Toll</span>
+  <h2>The Death of "The Zone"</h2>
+  <p class="subtitle">This workflow changes how your brain works. It's not all upside.</p>
+  <ul class="points orange">
+    <li>No more 4-hour deep dives — constant <span class="emphasis-warn">context switching</span></li>
+    <li>Pattern: assign Agent A a 30-min task → switch → assign Agent B → review A → correct → loop</li>
+    <li>More code review, less flow state</li>
+    <li>As a tech lead, it lets me get closer to the code — but some engineers will struggle with the shift</li>
+  </ul>
+  <div class="takeaway"><strong>Mental model:</strong> your brain becomes a CPU scheduler. Different skill, different feel. Be mindful of the transition.</div>
+</div>
+
+<!-- Workflow Gentrification -->
+<div class="slide" data-slide="16">
+  <span class="part-label">Part 4 — The Human Toll</span>
+  <h2>Workflow Gentrification</h2>
+  <p class="subtitle">When it's easy to build, it's easy to build things you don't need. This is a real problem.</p>
+  <ul class="points orange">
+    <li>Because it's <span class="emphasis-warn">easy to build</span>, we build features that don't solve real problems</li>
+    <li>AI-written code still needs human-led maintenance — you still own the debt</li>
+    <li>20% more productivity can mean <span class="emphasis-warn">40% more technical debt</span> if you're not careful</li>
+    <li>Code sprawl is real — more surface area for bugs, more to understand</li>
+  </ul>
+  <div class="takeaway"><strong>Warning:</strong> the constraint isn't "can we build it." It's "should we build it." Discipline matters more than ever.</div>
+</div>
+
+<!-- Reality Check -->
+<div class="slide" data-slide="17">
+  <span class="part-label">Part 4 — The Human Toll</span>
+  <h2>The Reality Check</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="number emphasis-warn">20–30%</div>
+      <div class="label">Net productivity gain<br>(not 10x)</div>
+    </div>
+    <div class="stat">
+      <div class="number" style="color:var(--accent)">100%</div>
+      <div class="label">More complexity<br>in the workflow</div>
+    </div>
+  </div>
+  <p class="subtitle" style="margin-top:2rem">The bottleneck moved — from coding to validation. That doesn't mean it doesn't work. It means it's more complicated than just pumping out code faster.</p>
+</div>
+
+<!-- Code Is the Universal Language -->
+<div class="slide" data-slide="18">
+  <span class="part-label">Part 5 — Conclusion</span>
+  <h2>Code Is the Universal Language</h2>
+  <p class="subtitle">Agents work best when you turn problems into code. This isn't making code less important — it's making it more important.</p>
+  <ul class="points green">
+    <li><span class="emphasis-green">Code is what agents speak fluently.</span> Turn everything into code — config, specs, infra, tests</li>
+    <li>More people will code (at least a little) because the barrier to entry dropped</li>
+    <li><span class="emphasis-green">Jevons paradox:</span> making development cheaper increases demand for software — and therefore for <span class="emphasis-green">more engineers</span>, not fewer</li>
+    <li>We need people who understand systems: judgment, architecture, context — <span class="emphasis-green">that doesn't automate away</span></li>
+  </ul>
+  <div class="takeaway"><strong>Bottom line:</strong> the engineer's job shifts from <em>writing</em> to <em>directing</em>. Agents handle execution — you handle judgment, architecture, and context. The skill changes; the need for engineers doesn't.</div>
+</div>
+
+<!-- Q&A -->
+<div class="slide title-slide" data-slide="19">
+  <h2>Questions?</h2>
+  <p class="subtitle">Let's discuss model costs, agent hallucinations, and what's actually working.</p>
+</div>
+
+<div class="slide-number" id="slideNumber">1 / 19</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+
+function showSlide(index) {
+  if (index < 0 || index >= slides.length) return;
+  slides[current].classList.remove('active');
+  current = index;
+  slides[current].classList.add('active');
+  document.getElementById('slideNumber').textContent = `${current + 1} / ${slides.length}`;
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+    e.preventDefault();
+    showSlide(current + 1);
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    showSlide(current - 1);
+  } else if (e.key === 'Home') {
+    showSlide(0);
+  } else if (e.key === 'End') {
+    showSlide(slides.length - 1);
+  }
+});
+
+document.addEventListener('touchstart', (e) => {
+  const x = e.touches[0].clientX;
+  let startX = x;
+  const onEnd = (e) => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff < -50) showSlide(current + 1);
+    else if (diff > 50) showSlide(current - 1);
+    document.removeEventListener('touchend', onEnd);
+  };
+  document.addEventListener('touchend', onEnd);
+});
+</script>
+</body>
+</html>
