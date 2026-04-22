@@ -2,4 +2,4 @@
 
 Conference talk presentation by Joe Reuter (Tech Lead, Elastic).
 
-**Live presentation:** https://schussenvaley.tech/agentic_software_engineering/presentation.html
+**Live presentation:** https://flash1293.github.io/agentic-software-engineering/presentation.html
