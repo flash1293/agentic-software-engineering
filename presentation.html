@@ -177,23 +177,6 @@ h3 {
 .diagram .label { color: var(--warn); }
 .diagram .dim { color: var(--text-dim); }
 
-.takeaway {
-  margin-top: 1.8rem;
-  padding: 0.8rem 1.2rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
-  line-height: 1.5;
-  color: var(--text-dim);
-  max-width: 650px;
-}
-
-.takeaway strong {
-  color: var(--text);
-  font-weight: 500;
-}
-
 .stats {
   display: flex;
   gap: 3vw;
@@ -314,7 +297,6 @@ h3 {
       </div>
     </div>
   </div>
-  <div class="takeaway"><strong>Limitation:</strong> no reasoning, no planning. Ask "is 17 prime?" and it pattern-matches its way to an answer — right or wrong. Good for autocomplete; not enough for complex tasks.</div>
 </div>
 
 <!-- SLIDE 3: Thinking -->
@@ -334,7 +316,6 @@ h3 {
     <div style="margin-top:0.3rem"><span class="label">&lt;/thinking&gt;</span></div>
     <div style="margin-top:0.6rem; color:#7ee787">"The test has a race condition on the shared cache. Add a threading.Lock around cache.set()."</div>
   </div>
-  <div class="takeaway"><strong>What changed:</strong> the model explores multiple hypotheses silently before answering. Longer tasks, fewer confident wrong answers. This is where models got genuinely useful for engineering work. <a href="https://arxiv.org/abs/2201.11903" target="_blank" style="color:var(--accent);text-decoration:none;">Wei et al. 2022 →</a></div>
 </div>
 
 <!-- SLIDE 4: Tool calls -->
@@ -381,14 +362,13 @@ h3 {
       <div style="font-size:0.72rem;color:#8b949e;margin-top:0.5rem;">Every model has its own token dialect. The harness parses it and runs the real command. The model never executes — it only <em>describes</em>.</div>
     </div>
   </div>
-  <div class="takeaway"><strong>= Agent:</strong> think → act → observe → repeat. This loop is what makes it possible to hand off a 30-minute task and come back to a PR. <a href="https://arxiv.org/abs/2210.03629" target="_blank" style="color:var(--accent);text-decoration:none;">ReAct paper (Yao et al. 2022) →</a></div>
 </div>
 
 <!-- Foundation: The Tooling Stack -->
 <div class="slide" data-slide="5">
   <span class="part-label">Foundation — The Infrastructure</span>
   <h2>Harness → Provider: The Loop</h2>
-  <p class="subtitle">The harness (Claude Code, OpenCode…) orchestrates a tight request/response loop with the model provider. The model never touches your machine — it only describes what to do.</p>
+  <p class="subtitle">The harness (<a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:var(--accent2);text-decoration:none;">pi</a>, Claude Code…) orchestrates a tight request/response loop with the model provider. The model never touches your machine — it only describes what to do.</p>
 
   <div style="max-width:860px;margin-top:0.9rem;display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;">
 
@@ -399,7 +379,7 @@ h3 {
         <div style="color:#7ee787;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Harness &nbsp;·&nbsp; runs on your machine</div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
           <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #7ee787;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" style="color:#e6edf3;text-decoration:none;">Claude Code</a></span>
-          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #7ee787;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://opencode.ai" target="_blank" style="color:#e6edf3;text-decoration:none;">OpenCode</a></span>
+          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #7ee787;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:#e6edf3;text-decoration:none;">pi</a></span>
           <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #7ee787;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://cursor.com" target="_blank" style="color:#e6edf3;text-decoration:none;">Cursor</a></span>
           <span style="font-size:0.78rem;color:#8b949e;border:1px dashed #7ee78766;border-radius:5px;padding:0.15rem 0.5rem;">Pi…</span>
         </div>
@@ -451,7 +431,6 @@ h3 {
       </div>
     </div>
   </div>
-  <div class="takeaway"><strong>Key insight:</strong> the provider never touches your filesystem. The harness is the bridge — it runs tools locally, then feeds results back. Swap the provider and only the price and speed change.</div>
 </div>
 
 <!-- Part 1: New Reality -->
@@ -463,7 +442,6 @@ h3 {
     <li>Longer feedback loop = more complex tasks the agent can handle</li>
     <li>We went from autocompleting a line to 30-minute unsupervised tasks</li>
   </ul>
-  <div class="takeaway"><strong>Key shift:</strong> agents handle execution now. Humans provide direction. But we still read every line — we just don't write boilerplate anymore.</div>
 </div>
 
 <!-- METR Chart -->
@@ -471,171 +449,83 @@ h3 {
   <span class="part-label">Part 1 — The New Reality</span>
   <h2>Feedback Loop Length Is Everything</h2>
   <p class="subtitle" style="margin-bottom:0.6rem">METR benchmarks how long a model can work on a research task before needing help — doubling every ~7 months. (<a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" style="color:var(--accent);text-decoration:none;">Kwa et al. 2025</a> · <a href="https://metr.org" target="_blank" style="color:var(--accent);text-decoration:none;">metr.org</a>)</p>
-  <div style="width:100%;max-width:620px;">
+  <div style="width:100%;max-width:860px;">
     <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
-      <defs>
-        <marker id="none" markerWidth="0" markerHeight="0"/>
-      </defs>
-      <!-- Plot area: x 80..740, y 10..270 -->
       <rect x="80" y="10" width="660" height="260" rx="4" fill="#161b22" stroke="#30363d"/>
-      <!-- Horizontal grid lines -->
-      <line x1="80" y1="218" x2="740" y2="218" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="166" x2="740" y2="166" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="114" x2="740" y2="114" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="62"  x2="740" y2="62"  stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="10"  x2="740" y2="10"  stroke="#30363d" stroke-dasharray="3,4"/>
-      <!-- Y labels -->
-      <text x="76" y="274" fill="#8b949e" font-size="12" text-anchor="end" font-family="Inter,sans-serif">1 min</text>
-      <text x="76" y="222" fill="#8b949e" font-size="12" text-anchor="end" font-family="Inter,sans-serif">10 min</text>
-      <text x="76" y="170" fill="#8b949e" font-size="12" text-anchor="end" font-family="Inter,sans-serif">1 hr</text>
-      <text x="76" y="118" fill="#8b949e" font-size="12" text-anchor="end" font-family="Inter,sans-serif">10 hr</text>
-      <text x="76" y="66"  fill="#8b949e" font-size="12" text-anchor="end" font-family="Inter,sans-serif">100 hr</text>
-      <text x="76" y="16"  fill="#8b949e" font-size="12" text-anchor="end" font-family="Inter,sans-serif">1 week</text>
-      <!-- X labels -->
-      <text x="110" y="292" fill="#8b949e" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2019</text>
-      <text x="308" y="292" fill="#8b949e" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2022</text>
-      <text x="374" y="292" fill="#8b949e" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2023</text>
-      <text x="440" y="292" fill="#8b949e" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2024</text>
-      <text x="572" y="292" fill="#8b949e" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2025</text>
-      <text x="704" y="292" fill="#8b949e" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2026</text>
-
-      <!-- GPT-2 2019 ~1 min -->
-      <circle cx="110" cy="268" r="4" fill="#8b949e"/>
-      <text x="110" y="283" fill="#8b949e" font-size="11" text-anchor="middle" font-family="Inter,sans-serif">GPT-2</text>
-
-      <!-- GPT-3.5 2022 ~3 min -->
-      <circle cx="308" cy="255" r="4" fill="#8b949e"/>
-      <text x="308" y="283" fill="#8b949e" font-size="11" text-anchor="middle" font-family="Inter,sans-serif">3.5</text>
-
-      <!-- GPT-4 2023 ~7 min -->
-      <circle cx="374" cy="240" r="4" fill="#8b949e"/>
-      <text x="374" y="283" fill="#8b949e" font-size="11" text-anchor="middle" font-family="Inter,sans-serif">4</text>
-
-      <!-- GPT-4o May 2024 ~12 min -->
-      <circle cx="440" cy="230" r="4" fill="#58a6ff"/>
-      <text x="440" y="283" fill="#8b949e" font-size="11" text-anchor="middle" font-family="Inter,sans-serif">4o</text>
-
-      <!-- Claude 3.5 Sonnet Jun 2024 ~18 min -->
-      <circle cx="452" cy="224" r="4" fill="#58a6ff"/>
-      <text x="469" y="222" fill="#8b949e" font-size="11" text-anchor="start" font-family="Inter,sans-serif">3.5S</text>
-
-      <!-- o1 Dec 2024 ~1 hr -->
-      <circle cx="506" cy="178" r="5" fill="#f0883e"/>
-      <text x="516" y="176" fill="#f0883e" font-size="11" font-family="Inter,sans-serif" font-weight="600" dy="3">o1</text>
-
-      <!-- Claude 3.7 Feb 2025 ~1.5 hr -->
-      <circle cx="528" cy="166" r="5" fill="#f0883e"/>
-      <text x="538" y="164" fill="#f0883e" font-size="11" font-family="Inter,sans-serif" font-weight="600" dy="3">3.7</text>
-
-      <!-- o3 Apr 2025 ~3 hr -->
-      <circle cx="550" cy="152" r="5" fill="#f0883e"/>
-      <text x="560" y="150" fill="#f0883e" font-size="11" font-family="Inter,sans-serif" font-weight="600" dy="3">o3</text>
-
-      <!-- Opus 4.5 Nov 2025 ~8 hr -->
-      <circle cx="638" cy="120" r="5" fill="#7ee787"/>
-      <text x="648" y="118" fill="#7ee787" font-size="11" font-family="Inter,sans-serif" font-weight="600" dy="3">Opus 4.5</text>
-
-      <!-- Opus 4.6 Feb 2026 ~20 hr -->
-      <circle cx="704" cy="84" r="5" fill="#7ee787"/>
-      <text x="714" y="82" fill="#7ee787" font-size="11" font-family="Inter,sans-serif" font-weight="600" dy="3">Opus 4.6</text>
-
-      <!-- Source -->
-      <text x="740" y="312" fill="#8b949e" font-size="9" text-anchor="end" font-family="Inter,sans-serif">Source: METR (metr.org) — 50% task-completion time horizon</text>
-
-      <!-- Era boundary lines -->
-      <line x1="740" y1="235" x2="898" y2="235" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
-      <line x1="740" y1="166" x2="898" y2="166" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
-
-      <!-- Era 1: Autocomplete -->
-      <line x1="744" y1="236" x2="744" y2="269" stroke="#8b949e" stroke-width="1.2"/>
-      <line x1="744" y1="236" x2="749" y2="236" stroke="#8b949e" stroke-width="1.2"/>
-      <line x1="744" y1="269" x2="749" y2="269" stroke="#8b949e" stroke-width="1.2"/>
-      <text x="754" y="249" fill="#8b949e" font-size="12" font-family="Inter,sans-serif" font-weight="600">Autocomplete</text>
-      <text x="754" y="264" fill="#8b949e" font-size="11" font-family="Inter,sans-serif">write a line at a time</text>
-
-      <!-- Era 2: Supervised -->
-      <line x1="744" y1="167" x2="744" y2="234" stroke="#58a6ff" stroke-width="1.2"/>
-      <line x1="744" y1="167" x2="749" y2="167" stroke="#58a6ff" stroke-width="1.2"/>
-      <line x1="744" y1="234" x2="749" y2="234" stroke="#58a6ff" stroke-width="1.2"/>
-      <text x="754" y="191" fill="#58a6ff" font-size="12" font-family="Inter,sans-serif" font-weight="600">Supervised agent</text>
-      <text x="754" y="207" fill="#58a6ff" font-size="11" font-family="Inter,sans-serif">tell it what to do,</text>
-      <text x="754" y="221" fill="#58a6ff" font-size="11" font-family="Inter,sans-serif">watch it work</text>
-
-      <!-- Era 3: Autonomous -->
-      <line x1="744" y1="84" x2="744" y2="165" stroke="#7ee787" stroke-width="1.2"/>
-      <line x1="744" y1="84" x2="749" y2="84" stroke="#7ee787" stroke-width="1.2"/>
-      <line x1="744" y1="165" x2="749" y2="165" stroke="#7ee787" stroke-width="1.2"/>
-      <text x="754" y="112" fill="#7ee787" font-size="12" font-family="Inter,sans-serif" font-weight="600">Autonomous agent</text>
-      <text x="754" y="127" fill="#7ee787" font-size="11" font-family="Inter,sans-serif">draft a plan, hand off,</text>
-      <text x="754" y="142" fill="#7ee787" font-size="11" font-family="Inter,sans-serif">come back to a PR</text>
+      <line x1="80" y1="270" x2="740" y2="270" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="206" x2="740" y2="206" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="157" x2="740" y2="157" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="119" x2="740" y2="119" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="70" x2="740" y2="70" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="21" x2="740" y2="21" stroke="#30363d" stroke-dasharray="3,4"/>
+      <line x1="80" y1="10" x2="740" y2="10" stroke="#30363d" stroke-dasharray="3,4"/>
+      <text x="76" y="274" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">3 sec</text>
+      <text x="76" y="210" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">1 min</text>
+      <text x="76" y="161" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">10 min</text>
+      <text x="76" y="123" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">1 hr</text>
+      <text x="76" y="74" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">10 hr</text>
+      <text x="76" y="25" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">100 hr</text>
+      <text x="76" y="14" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">1 week</text>
+      <text x="121" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2019</text>
+      <text x="204" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2020</text>
+      <text x="286" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2021</text>
+      <text x="369" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2022</text>
+      <text x="451" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2023</text>
+      <text x="534" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2024</text>
+      <text x="616" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2025</text>
+      <text x="699" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2026</text>
+      <!-- GPT-2 2019-02-14 0.1min -->
+      <circle cx="90" cy="268" r="5" fill="#8b949e"/>
+      <text x="99" y="272" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">GPT-2</text>
+      <!-- GPT-3.5 2022-03-15 0.6min -->
+      <circle cx="344" cy="217" r="5" fill="#8b949e"/>
+      <text x="353" y="221" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">GPT-3.5</text>
+      <!-- GPT-4 2023-03-14 4.0min -->
+      <circle cx="427" cy="177" r="5" fill="#8b949e"/>
+      <text x="436" y="181" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">GPT-4</text>
+      <!-- GPT-4o 2024-05-13 7.0min -->
+      <circle cx="523" cy="165" r="5" fill="#8b949e"/>
+      <text x="532" y="169" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">GPT-4o</text>
+      <!-- Claude 3.5S 2024-10-22 20.5min -->
+      <circle cx="559" cy="142" r="6" fill="#58a6ff"/>
+      <text x="569" y="148" fill="#58a6ff" font-size="13" font-family="Inter,sans-serif" font-weight="600">Sonnet 3.5</text>
+      <!-- o3 2025-04-16 119.7min -->
+      <circle cx="599" cy="104" r="6" fill="#58a6ff"/>
+      <text x="609" y="110" fill="#58a6ff" font-size="13" font-family="Inter,sans-serif" font-weight="600">o3</text>
+      <!-- Claude Opus 4.5 2025-11-24 293.0min -->
+      <circle cx="649" cy="85" r="6" fill="#7ee787"/>
+      <text x="641" y="79" fill="#7ee787" font-size="13" text-anchor="end" font-family="Inter,sans-serif" font-weight="600">Opus 4.5</text>
+      <!-- Claude Opus 4.6 2026-02-05 718.8min -->
+      <circle cx="665" cy="66" r="6" fill="#7ee787"/>
+      <text x="657" y="60" fill="#7ee787" font-size="13" text-anchor="end" font-family="Inter,sans-serif" font-weight="600">Opus 4.6</text>
+      <line x1="740" y1="157" x2="898" y2="157" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="740" y1="90" x2="898" y2="90" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
+      <!-- Era 1: Autocomplete (gray) -->
+      <line x1="744" y1="157" x2="744" y2="270" stroke="#8b949e" stroke-width="1.2"/>
+      <line x1="744" y1="157" x2="749" y2="157" stroke="#8b949e" stroke-width="1.2"/>
+      <line x1="744" y1="270" x2="749" y2="270" stroke="#8b949e" stroke-width="1.2"/>
+      <text x="754" y="206" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">Autocomplete</text>
+      <text x="754" y="222" fill="#8b949e" font-size="12" font-family="Inter,sans-serif">write a line at a time</text>
+      <!-- Era 2: Supervised (blue) -->
+      <line x1="744" y1="90" x2="744" y2="157" stroke="#58a6ff" stroke-width="1.2"/>
+      <line x1="744" y1="90" x2="749" y2="90" stroke="#58a6ff" stroke-width="1.2"/>
+      <line x1="744" y1="157" x2="749" y2="157" stroke="#58a6ff" stroke-width="1.2"/>
+      <text x="754" y="111" fill="#58a6ff" font-size="13" font-family="Inter,sans-serif" font-weight="600">Supervised agent</text>
+      <text x="754" y="127" fill="#58a6ff" font-size="12" font-family="Inter,sans-serif">tell it what to do,</text>
+      <text x="754" y="142" fill="#58a6ff" font-size="12" font-family="Inter,sans-serif">watch it work</text>
+      <!-- Era 3: Autonomous (green) -->
+      <line x1="744" y1="66" x2="744" y2="90" stroke="#7ee787" stroke-width="1.2"/>
+      <line x1="744" y1="66" x2="749" y2="66" stroke="#7ee787" stroke-width="1.2"/>
+      <line x1="744" y1="90" x2="749" y2="90" stroke="#7ee787" stroke-width="1.2"/>
+      <text x="754" y="66" fill="#7ee787" font-size="13" font-family="Inter,sans-serif" font-weight="600">Autonomous agent</text>
+      <text x="754" y="82" fill="#7ee787" font-size="12" font-family="Inter,sans-serif">draft a plan, hand off,</text>
+      <text x="754" y="97" fill="#7ee787" font-size="12" font-family="Inter,sans-serif">come back to a PR</text>
+      <text x="740" y="302" fill="#8b949e" font-size="10" text-anchor="end" font-family="Inter,sans-serif">Source: METR (metr.org) — 50% task-completion time horizon</text>
     </svg>
   </div>
 </div>
 
 <!-- Part 2: The Lifecycle -->
-
-<!-- GitHub Switchboard -->
-<div class="slide" data-slide="7">
-  <span class="part-label">Part 2 — The Lifecycle</span>
-  <h2>The GitHub Switchboard</h2>
-  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate. <span style="color:#58a6ff;font-size:0.85em;">Blue = agent-powered</span></p>
-  <div style="width:100%;max-width:900px;">
-    <!-- Top row: inputs -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
-      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">New Idea</div>
-      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">User Feedback</div>
-      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">Production Error</div>
-    </div>
-    <!-- Agent tags under inputs -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
-      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Planning Agent scopes the work</div>
-      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Planning Agent scopes the work</div>
-      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Triage Agent clusters logs, creates Issue</div>
-    </div>
-    <!-- Converging arrows -->
-    <div style="text-align:center;color:#8b949e;font-size:0.9rem;line-height:1;margin-bottom:0.25rem;">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
-    <!-- Main flow + human involvement side by side -->
-    <div style="display:grid;grid-template-columns:1fr auto;gap:1.2rem;align-items:start;">
-      <!-- Flow column -->
-      <div style="display:flex;flex-direction:column;gap:0.25rem;align-items:stretch;">
-        <div style="padding:0.65rem 1rem;border:2px solid #58a6ff;border-radius:8px;color:#58a6ff;font-weight:600;text-align:center;">
-          GitHub Issue <span style="font-size:0.72rem;font-weight:400;color:#8b949e;">&nbsp;— auto-created or manual</span>
-        </div>
-        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
-        <div style="padding:0.65rem 1rem;border:1px solid #58a6ff;border-radius:8px;color:#e6edf3;text-align:center;">
-          Planning / Spec
-          <div style="font-size:0.7rem;color:#58a6ff;margin-top:0.2rem;">agent drafts spec → human approves</div>
-        </div>
-        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
-        <div style="padding:0.65rem 1rem;border:1px solid #58a6ff;border-radius:8px;color:#58a6ff;font-weight:600;text-align:center;">Coding Agent</div>
-        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
-        <div style="padding:0.65rem 1rem;border:2px solid #e6edf3;border-radius:8px;color:#e6edf3;font-weight:600;text-align:center;">Pull Request</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.25rem;">
-          <div style="padding:0.35rem 0.6rem;border:1px solid #58a6ff;border-radius:6px;font-size:0.72rem;color:#58a6ff;text-align:center;"><a href="https://www.coderabbit.ai" target="_blank" style="color:#58a6ff;text-decoration:none;">CodeRabbit</a> — static review</div>
-          <div style="padding:0.35rem 0.6rem;border:1px solid #58a6ff;border-radius:6px;font-size:0.72rem;color:#58a6ff;text-align:center;">Exploratory Tests — dynamic</div>
-        </div>
-      </div>
-      <!-- Human involvement column -->
-      <div style="display:flex;flex-direction:column;gap:0.3rem;width:195px;padding-top:3.6rem;">
-        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
-          <div style="color:#e6edf3;font-weight:600;">Human: very involved</div>
-          <div style="color:#8b949e;">Architecture &amp; design</div>
-        </div>
-        <div style="height:0.8rem;"></div>
-        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
-          <div style="color:#e6edf3;font-weight:600;">Human: less involved</div>
-          <div style="color:#8b949e;">Review &amp; steer</div>
-        </div>
-        <div style="height:0.8rem;"></div>
-        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
-          <div style="color:#e6edf3;font-weight:600;">Human: quality gate</div>
-          <div style="color:#8b949e;">Approve or reject</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="takeaway" style="margin-top:0.6rem"><strong>Pattern:</strong> agents handle discovery, drafting, and first-pass review. Humans set direction and hold the quality gate.</div>
-</div>
 
 <!-- Planning Before Code -->
 <div class="slide" data-slide="8">
@@ -677,7 +567,6 @@ h3 {
       </div>
     </div>
   </div>
-  <div class="takeaway"><strong>Why this works:</strong> the spec is the contract between you and the agent. Changing a requirement in Markdown costs seconds. Changing it after 200 lines of generated code costs hours.</div>
 </div>
 
 <!-- Bottleneck Shift -->
@@ -731,7 +620,6 @@ h3 {
     </div>
   </div>
 
-  <div class="takeaway" style="margin-top:0.8rem"><strong>The goal:</strong> push every column down, not just coding. Agents are genuinely strong there today. Validation, triage, and planning are next — but we're not there yet.</div>
 </div>
 
 <!-- Validation Bottleneck -->
@@ -741,11 +629,20 @@ h3 {
   <p class="subtitle">Coding speed is no longer the bottleneck. Reviewing is. The bottleneck just moved.</p>
   <ul class="points orange">
     <li>We can produce code <span class="emphasis-warn">faster than we can validate it</span></li>
-    <li><a href="https://www.coderabbit.ai" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">CodeRabbit</a> on every PR — automated sanity checks, style, logic issues</li>
+    <li><a href="https://macroscope.app" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">Macroscope</a> on every PR — automated sanity checks, style, logic issues</li>
     <li>But automated review isn't enough — humans are still the quality gate</li>
     <li>The review burden is now the constraint on velocity</li>
   </ul>
-  <div class="takeaway"><strong>Reality:</strong> you're not "writing less." You're reviewing more. The skill is shifting from syntax to judgment.</div>
+</div>
+
+<!-- Macroscope Screenshot -->
+<div class="slide" data-slide="10">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>Macroscope — Example Review</h2>
+  <p class="subtitle">A real <a href="https://macroscope.app" target="_blank" style="color:var(--accent2);text-decoration:none;">Macroscope</a> comment on a PR — logic analysis, not just style.</p>
+  <div style="display:flex;justify-content:center;margin-top:0.6rem;">
+    <img src="static-code-review.png" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #30363d;" alt="Macroscope code review screenshot">
+  </div>
 </div>
 
 <!-- Exploratory Testing -->
@@ -759,7 +656,16 @@ h3 {
     <li>Agent scripts <a href="https://playwright.dev" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">Playwright</a> on the fly to test those paths</li>
     <li>Agent "looks" at screenshots to verify behavior</li>
   </ul>
-  <div class="takeaway"><strong>Key difference:</strong> not a fixed test suite. It's a flexible reasoner exploring what changed. Blurs the line between testing and synthetics monitoring.</div>
+</div>
+
+<!-- Exploratory Testing Screenshot -->
+<div class="slide" data-slide="11">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>Exploratory Testing — Example Output</h2>
+  <p class="subtitle">A GitHub Issue filed autonomously by the exploratory testing agent — with a full reproduction journey.</p>
+  <div style="display:flex;justify-content:center;margin-top:0.6rem;">
+    <img src="exploratory-testing.png" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #30363d;" alt="Exploratory testing GitHub issue screenshot">
+  </div>
 </div>
 
 <!-- Dev meets Ops -->
@@ -772,10 +678,81 @@ h3 {
     <div><span class="label">2. Investigate:</span> <span class="dim">Triage Agent runs a protocol-driven investigation — queries telemetry, checks git history, correlates stack traces</span></div>
     <div><span class="label">3. File:</span> <span class="dim">Agent creates a GitHub Issue with root cause, affected versions, and a suggested fix</span></div>
     <div><span class="label">4. Fix:</span> <span class="dim">Coding Agent picks up the issue, drafts a PR</span></div>
-    <div><span class="label">5. Validate:</span> <span class="dim">CodeRabbit + Exploratory Tests run on the PR</span></div>
+    <div><span class="label">5. Validate:</span> <span class="dim">Macroscope + Exploratory Tests run on the PR</span></div>
     <div><span class="label">6. Ship:</span> <span style="color:#7ee787;">Human approves → merged → deployed</span></div>
   </div>
-  <div class="takeaway"><strong>Real example (elastic.co):</strong> a sporadic TypeError in Kibana's Streams UI was found, root-caused to a race condition, and reported with a fix suggestion — fully autonomously. The engineer only entered the loop to review the PR. <a href="https://www.elastic.co/observability-labs/blog/automated-error-triaging" target="_blank" style="color:var(--accent);text-decoration:none;">Read the full write-up →</a></div>
+</div>
+
+<!-- Error Triage Screenshot -->
+<div class="slide" data-slide="12">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>Triage Agent — Example Output</h2>
+  <p class="subtitle">The actual GitHub Issue filed autonomously — root cause, affected versions, and a fix suggestion, all included.</p>
+  <div style="display:flex;justify-content:center;margin-top:0.6rem;">
+    <img src="error-report.webp" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #30363d;" alt="Error triage report screenshot">
+  </div>
+</div>
+
+<!-- GitHub Switchboard -->
+<div class="slide" data-slide="12">
+  <span class="part-label">Part 2 — The Lifecycle</span>
+  <h2>The GitHub Switchboard</h2>
+  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate. <span style="color:#58a6ff;font-size:0.85em;">Blue = agent-powered</span></p>
+  <div style="width:100%;max-width:900px;">
+    <!-- Top row: inputs -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
+      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">New Idea</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">User Feedback</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">Production Error</div>
+    </div>
+    <!-- Agent tags under inputs -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
+      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Planning Agent scopes the work</div>
+      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Planning Agent scopes the work</div>
+      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Triage Agent clusters logs, creates Issue</div>
+    </div>
+    <!-- Converging arrows -->
+    <div style="text-align:center;color:#8b949e;font-size:0.9rem;line-height:1;margin-bottom:0.25rem;">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
+    <!-- Main flow + human involvement side by side -->
+    <div style="display:grid;grid-template-columns:1fr auto;gap:1.2rem;align-items:start;">
+      <!-- Flow column -->
+      <div style="display:flex;flex-direction:column;gap:0.25rem;align-items:stretch;">
+        <div style="padding:0.65rem 1rem;border:2px solid #e6edf3;border-radius:8px;color:#e6edf3;font-weight:600;text-align:center;">
+          GitHub Issue <span style="font-size:0.72rem;font-weight:400;color:#8b949e;">&nbsp;— auto-created or manual</span>
+        </div>
+        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:1px solid #58a6ff;border-radius:8px;color:#e6edf3;text-align:center;">
+          Planning / Spec
+          <div style="font-size:0.7rem;color:#58a6ff;margin-top:0.2rem;">agent drafts spec → human approves</div>
+        </div>
+        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:1px solid #58a6ff;border-radius:8px;color:#58a6ff;font-weight:600;text-align:center;">Coding Agent</div>
+        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:2px solid #e6edf3;border-radius:8px;color:#e6edf3;font-weight:600;text-align:center;">Pull Request</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.25rem;">
+          <div style="padding:0.35rem 0.6rem;border:1px solid #58a6ff;border-radius:6px;font-size:0.72rem;color:#58a6ff;text-align:center;"><a href="https://macroscope.app" target="_blank" style="color:#58a6ff;text-decoration:none;">Macroscope</a> — static review</div>
+          <div style="padding:0.35rem 0.6rem;border:1px solid #58a6ff;border-radius:6px;font-size:0.72rem;color:#58a6ff;text-align:center;">Exploratory Tests — dynamic</div>
+        </div>
+      </div>
+      <!-- Human involvement column -->
+      <div style="display:flex;flex-direction:column;gap:0.3rem;width:195px;padding-top:3.6rem;">
+        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#e6edf3;font-weight:600;">Human: very involved</div>
+          <div style="color:#8b949e;">Architecture &amp; design</div>
+        </div>
+        <div style="height:0.8rem;"></div>
+        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#e6edf3;font-weight:600;">Human: less involved</div>
+          <div style="color:#8b949e;">Review &amp; steer</div>
+        </div>
+        <div style="height:0.8rem;"></div>
+        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#e6edf3;font-weight:600;">Human: quality gate</div>
+          <div style="color:#8b949e;">Approve or reject</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Part 3: The Stack -->
@@ -789,7 +766,7 @@ h3 {
     <div class="col">
       <h3>How it works for me today</h3>
       <ul class="points" style="margin-top:0.5rem;">
-        <li><a href="https://opencode.ai" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">OpenCode</a> runs in each TMux pane — one agent per task/branch</li>
+        <li><a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">pi</a> runs in each TMux pane — one agent per task/branch</li>
         <li><a href="https://github.com/tmux/tmux" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">TMux</a> is the session manager: persistent, switchable, parallel</li>
         <li>Assign Agent A a 30-min task → switch pane → assign Agent B → come back, review, correct → repeat</li>
         <li>For smaller tasks &amp; adjustments: harness runs in a <strong style="color:var(--accent)">GitHub Action</strong> — ephemeral cloud worker, not tied to my machine. Produces a PR, I review async.</li>
@@ -806,41 +783,24 @@ h3 {
   </div>
 </div>
 
-<!-- How Token Pricing Works -->
+<!-- pi Screenshot -->
 <div class="slide" data-slide="13">
   <span class="part-label">Part 3 — The Stack</span>
-  <h2>How You Actually Pay for Models</h2>
-  <p class="subtitle">Forget subscriptions — API pricing is per token. A token is roughly ¾ of a word. You pay separately for what you send in and what the model generates.</p>
-  <div style="width:100%;max-width:820px;margin-top:1.2rem;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
-      <!-- Left: concept -->
-      <div>
-        <h3 style="margin-bottom:0.7rem;">The two meters</h3>
-        <div class="diagram" style="font-size:0.82rem;line-height:1.8;">
-          <div><span class="label">Input tokens</span> <span class="dim">— everything you send:</span></div>
-          <div class="dim" style="padding-left:1em;">system prompt + conversation history</div>
-          <div class="dim" style="padding-left:1em;">+ files, specs, context you inject</div>
-          <div style="margin-top:0.5rem"><span class="label">Output tokens</span> <span class="dim">— what the model writes:</span></div>
-          <div class="dim" style="padding-left:1em;">thinking tokens (if reasoning model)</div>
-          <div class="dim" style="padding-left:1em;">+ actual response / generated code</div>
-          <div style="margin-top:0.8rem;color:#f0883e;font-size:0.8rem;">⚠ Output tokens cost 3–5× more than input.<br>Long reasoning chains get expensive fast.</div>
-        </div>
-      </div>
-      <!-- Right: example -->
-      <div>
-        <h3 style="margin-bottom:0.7rem;">Example: one coding task</h3>
-        <div class="diagram" style="font-size:0.82rem;line-height:1.8;">
-          <div class="dim">10 000 input tokens (context + spec)</div>
-          <div class="dim">+ 2 000 output tokens (code + explanation)</div>
-          <div style="border-top:1px solid #30363d;margin:0.5rem 0;"></div>
-          <div><span class="dim">Opus 4.6: </span><span style="color:#f0883e">$0.05 + $0.05 = $0.10</span></div>
-          <div><span class="dim">GLM 5.1:  </span><span style="color:#7ee787">$0.0095 + $0.0063 = ~$0.016</span></div>
-          <div><span class="dim">Step Flash:</span><span style="color:#58a6ff"> $0.001 + $0.0006 = ~$0.002</span></div>
-          <div style="margin-top:0.8rem;color:#8b949e;font-size:0.78rem;">Subscription plans flatten this — but they're<br>subsidized and won't stay cheap. Budget per-token. <a href="https://openrouter.ai/docs/api-reference/overview" target="_blank" style="color:var(--accent);text-decoration:none;">OpenRouter API docs →</a></div>
-        </div>
-      </div>
-    </div>
+  <div style="display:flex;justify-content:center;margin-top:0.6rem;">
+    <img src="pi-env.png" style="max-height:65vh;max-width:100%;border-radius:8px;border:1px solid #30363d;" alt="pi running in split TMux panes">
   </div>
+</div>
+
+<!-- Context Is the New Code -->
+<div class="slide" data-slide="13">
+  <span class="part-label">Part 3 — The Stack</span>
+  <h2>Context Is the New Code</h2>
+  <p class="subtitle">The model is only as good as what you feed it. The real work is curating context.</p>
+  <ul class="points">
+    <li><span class="emphasis">Markdown "Skills"</span> — reusable capabilities. Example: <code>analyze_user_feedback.md</code> knows how to summarize thousands of support tickets</li>
+    <li>Shared repos with helper scripts that fetch from <span class="emphasis">BigQuery</span>, telemetry, web search — all into the context window</li>
+    <li>PMs use Cursor + agents for competitive analysis, feature prioritization — not just engineers anymore</li>
+  </ul>
 </div>
 
 <!-- Model Economics -->
@@ -872,47 +832,32 @@ h3 {
       <div style="font-size:0.8rem;color:#58a6ff;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.10 in / $0.30 out per 1M tokens</div>
       <ul class="points">
         <li>~50× cheaper than Opus on output</li>
-        <li>MoE, 196B params, 11B active</li>
         <li>Great for high-volume loops</li>
       </ul>
     </div>
   </div>
-  <div class="takeaway"><strong>Strategy:</strong> use Opus for architecture and planning, GLM or Step Flash for the actual coding. The cost difference is an order of magnitude — and you won't notice the quality difference on most tasks.</div>
-</div>
-
-<!-- Context Is the New Code -->
-<div class="slide" data-slide="14">
-  <span class="part-label">Part 3 — The Stack</span>
-  <h2>Context Is the New Code</h2>
-  <p class="subtitle">The model is only as good as what you feed it. The real work is curating context.</p>
-  <ul class="points">
-    <li><span class="emphasis">Markdown "Skills"</span> — reusable capabilities. Example: <code>analyze_user_feedback.md</code> knows how to summarize thousands of support tickets</li>
-    <li>Shared repos with helper scripts that fetch from <span class="emphasis">BigQuery</span>, telemetry, web search — all into the context window</li>
-    <li>PMs use Cursor + agents for competitive analysis, feature prioritization — not just engineers anymore</li>
-  </ul>
-  <div class="takeaway"><strong>Pattern:</strong> define the skills, pull in the data, agent connects the dots. Context engineering is the new software engineering.</div>
 </div>
 
 <!-- Part 4: Human Toll -->
 
 <!-- Death of The Zone -->
 <div class="slide" data-slide="15">
-  <span class="part-label">Part 4 — The Human Toll</span>
+  <span class="part-label">Part 4 — Downsides</span>
   <h2>The Death of "The Zone"</h2>
   <p class="subtitle">This workflow changes how your brain works. It's not all upside.</p>
   <ul class="points orange">
     <li>No more 4-hour deep dives — constant <span class="emphasis-warn">context switching</span></li>
     <li>Pattern: assign Agent A a 30-min task → switch → assign Agent B → review A → correct → loop</li>
     <li>More code review, less flow state</li>
+    <li><span class="emphasis-warn">Skill atrophy is real</span> — you lose something. The ability to write a module from scratch, the muscle memory of debugging without hints. Leaning on agents too hard and you'll notice the gap when the model is wrong and you can't tell.</li>
     <li>As a tech lead, it lets me get closer to the code — but some engineers will struggle with the shift</li>
   </ul>
-  <div class="takeaway"><strong>Mental model:</strong> your brain becomes a CPU scheduler. Different skill, different feel. Be mindful of the transition.</div>
 </div>
 
-<!-- Workflow Gentrification -->
+<!-- Building the Wrong Things -->
 <div class="slide" data-slide="16">
-  <span class="part-label">Part 4 — The Human Toll</span>
-  <h2>Workflow Gentrification</h2>
+  <span class="part-label">Part 4 — Downsides</span>
+  <h2>Building the Wrong Things</h2>
   <p class="subtitle">When it's easy to build, it's easy to build things you don't need. This is a real problem.</p>
   <ul class="points orange">
     <li>Because it's <span class="emphasis-warn">easy to build</span>, we build features that don't solve real problems</li>
@@ -920,12 +865,11 @@ h3 {
     <li>20% more productivity can mean <span class="emphasis-warn">40% more technical debt</span> if you're not careful</li>
     <li>Code sprawl is real — more surface area for bugs, more to understand</li>
   </ul>
-  <div class="takeaway"><strong>Warning:</strong> the constraint isn't "can we build it." It's "should we build it." Discipline matters more than ever.</div>
 </div>
 
 <!-- Reality Check -->
 <div class="slide" data-slide="17">
-  <span class="part-label">Part 4 — The Human Toll</span>
+  <span class="part-label">Part 4 — Downsides</span>
   <h2>The Reality Check</h2>
   <div class="stats">
     <div class="stat">
@@ -951,7 +895,6 @@ h3 {
     <li><a href="https://en.wikipedia.org/wiki/Jevons_paradox" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">Jevons paradox:</a> making development cheaper increases demand for software — and therefore for <span class="emphasis-green">more engineers</span>, not fewer</li>
     <li>We need people who understand systems: judgment, architecture, context — <span class="emphasis-green">that doesn't automate away</span></li>
   </ul>
-  <div class="takeaway"><strong>Bottom line:</strong> the engineer's job shifts from <em>writing</em> to <em>directing</em>. Agents handle execution — you handle judgment, architecture, and context. The skill changes; the need for engineers doesn't.</div>
 </div>
 
 <!-- Self-Healing Systems -->
@@ -989,7 +932,7 @@ h3 {
       <!-- Review x=310 -->
       <rect x="310" y="60" width="100" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
       <text x="360" y="83" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="600" font-family="Inter,sans-serif">Review</text>
-      <text x="360" y="100" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Inter,sans-serif">CodeRabbit</text>
+      <text x="360" y="100" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Inter,sans-serif">Macroscope</text>
 
       <!-- Deploy x=450 -->
       <rect x="450" y="60" width="100" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
@@ -1032,7 +975,6 @@ h3 {
     </svg>
   </div>
 
-  <div class="takeaway" style="margin-top:0.8rem"><strong>The insight:</strong> when coding and observability share the same agent loop, errors become inputs and fixes become outputs — automatically. Security, observability, and development stop being separate disciplines. The system heals itself; humans steer direction.</div>
 </div>
 
 <!-- Q&A -->
