@@ -5,24 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agentic Software Engineering</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0d1117;
-  --surface: #161b22;
-  --text: #e6edf3;
-  --text-dim: #8b949e;
-  --accent: #58a6ff;
-  --accent2: #7ee787;
-  --warn: #f0883e;
-  --border: #30363d;
+  --bg: #111009;
+  --surface: #1c1915;
+  --text: #ede8e0;
+  --text-dim: #9a9188;
+  --accent: #e6a84a;
+  --accent2: #6bb99a;
+  --warn: #df6b52;
+  --border: #2d2820;
 }
 
 html, body {
   height: 100%;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'DM Sans', -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow: hidden;
@@ -32,9 +32,9 @@ html, body {
   display: none;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
-  padding: 8vh 10vw;
+  padding: 5vh 8vw;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -56,46 +56,47 @@ html, body {
 
 .part-label {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 4px;
-  padding: 0.2em 0.7em;
   margin-bottom: 1.5rem;
 }
 
 h1 {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.1;
+  font-size: clamp(2.8rem, 7vw, 9rem);
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  line-height: 1.05;
   margin-bottom: 1.2rem;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 
 h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.2rem, 5.5vw, 7rem);
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
 }
 
 h3 {
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1.3rem, 2.5vw, 3rem);
   font-weight: 600;
   line-height: 1.3;
   margin-bottom: 0.6rem;
 }
 
 .subtitle {
-  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-size: clamp(1.15rem, 2.2vw, 2.6rem);
   color: var(--text-dim);
-  font-weight: 300;
-  line-height: 1.4;
-  max-width: 680px;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  width: 100%;
 }
 
 .points {
@@ -103,30 +104,29 @@ h3 {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 700px;
+  gap: 0.9rem;
+  width: 100%;
 }
 
 .points li {
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-size: clamp(1.05rem, 2vw, 2.4rem);
   line-height: 1.5;
   padding-left: 1.4em;
   position: relative;
 }
 
 .points li::before {
-  content: '';
+  content: '–';
   position: absolute;
   left: 0;
-  top: 0.55em;
-  width: 0.5em;
-  height: 0.5em;
-  border-radius: 50%;
-  background: var(--accent);
+  top: 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--accent);
 }
 
-.points.green li::before { background: var(--accent2); }
-.points.orange li::before { background: var(--warn); }
+.points.green li::before { color: var(--accent2); }
+.points.orange li::before { color: var(--warn); }
 
 .emphasis {
   color: var(--accent);
@@ -148,7 +148,7 @@ h3 {
   grid-template-columns: 1fr 1fr;
   gap: 4vw;
   margin-top: 2rem;
-  max-width: 900px;
+  width: 100%;
 }
 
 .col h3 {
@@ -166,10 +166,10 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 10px;
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+  font-size: clamp(0.85rem, 1.3vw, 1.1rem);
   line-height: 1.8;
   color: var(--accent2);
-  max-width: 750px;
+  width: 100%;
   overflow-x: auto;
 }
 
@@ -243,7 +243,7 @@ h3 {
 <div class="slide title-slide active" data-slide="1">
   <span class="part-label">Meetup Talk</span>
   <h1>Agentic Software Engineering</h1>
-  <p class="subtitle">How frontier agents are changing the way we build software</p>
+  <p class="subtitle">What's actually changed in the last two years, and what to do about it</p>
 </div>
 
 <!-- About Me -->
@@ -253,19 +253,19 @@ h3 {
     <div>
       <h3 style="margin-bottom:0.5rem;">Joe Reuter</h3>
       <div class="dim" style="margin-bottom:1.2rem;line-height:1.8;">Tech Lead · <a href="https://elastic.co" target="_blank" style="color:var(--accent);text-decoration:none;">Elastic</a></div>
-      <div style="font-size:0.82rem;color:#8b949e;line-height:1.7;">
-        <strong style="color:#e6edf3;">Elastic</strong> is the company behind the <span style="color:#f0883e">ELK Stack</span> — Elasticsearch, Logstash, Kibana.<br><br>
+      <div style="font-size:0.82rem;color:#9a9188;line-height:1.7;">
+        <strong style="color:#ede8e0;">Elastic</strong> is the company behind the <span style="color:#df6b52">ELK Stack</span> — Elasticsearch, Logstash, Kibana.<br><br>
         Used by thousands of companies to search, observe, and secure their data at scale. Think full-text search, APM, SIEM, log analytics.
       </div>
     </div>
     <div>
       <h3 style="margin-bottom:0.8rem;">Technology journey</h3>
       <div style="font-size:0.84rem;line-height:2;">
-        <div><span style="color:#58a6ff;font-family:monospace;font-size:0.9em;">TypeScript · React · Node.js</span></div>
+        <div><span style="color:#e6a84a;font-family:monospace;font-size:0.9em;">TypeScript · React · Node.js</span></div>
         <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;margin-bottom:0.5rem;">Frontend in Kibana — my main thing</div>
-        <div><span style="color:#f0883e;font-family:monospace;font-size:0.9em;">Java</span></div>
+        <div><span style="color:#df6b52;font-family:monospace;font-size:0.9em;">Java</span></div>
         <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;margin-bottom:0.5rem;">Elasticsearch core &amp; internals</div>
-        <div><span style="color:#7ee787;font-family:monospace;font-size:0.9em;">Go</span></div>
+        <div><span style="color:#6bb99a;font-family:monospace;font-size:0.9em;">Go</span></div>
         <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;">Data shippers &amp; agents</div>
       </div>
     </div>
@@ -276,24 +276,24 @@ h3 {
 <div class="slide" data-slide="3">
   <span class="part-label">Foundation — Step 1 of 3</span>
   <h2>It Started as Next-Token Prediction</h2>
-  <p class="subtitle">The model predicts the most likely next token, then repeats. No planning, no memory — just statistics over text. One token ≈ ¾ of a word.</p>
+  <p class="subtitle">The model picks the most likely next token and repeats. Pattern matching over enormous text corpora. One token ≈ ¾ of a word.</p>
   <div class="diagram" style="max-width:720px">
     <div style="font-size:0.85rem;line-height:1.9;">
-      <div><span class="dim">Context so far:</span> <span style="color:#e6edf3">"The Eiffel Tower is located in "</span></div>
-      <div style="margin-top:0.8rem"><span class="dim">Model samples the <strong style="color:#e6edf3">next single token</strong>:</span></div>
+      <div><span class="dim">Context so far:</span> <span style="color:#ede8e0">"The Eiffel Tower is located in "</span></div>
+      <div style="margin-top:0.8rem"><span class="dim">Model samples the <strong style="color:#ede8e0">next single token</strong>:</span></div>
       <div style="margin-top:0.4rem;padding-left:1.2rem;">
-        <span style="color:#7ee787;font-family:monospace">"Paris"</span>  <span class="dim">← 94%</span><br/>
-        <span style="color:#8b949e;font-family:monospace">"France"</span>  <span class="dim">← 3%</span><br/>
-        <span style="color:#8b949e;font-family:monospace">"the"</span>  <span class="dim">← 1%</span>
+        <span style="color:#6bb99a;font-family:monospace">"Paris"</span>  <span class="dim">← 94%</span><br/>
+        <span style="color:#9a9188;font-family:monospace">"France"</span>  <span class="dim">← 3%</span><br/>
+        <span style="color:#9a9188;font-family:monospace">"the"</span>  <span class="dim">← 1%</span>
       </div>
-      <div style="margin-top:0.9rem;border-top:1px solid #30363d;padding-top:0.7rem;">
-        <div><span class="dim">Token appended → now predicts the next:</span> <span style="color:#e6edf3">"…in Paris</span><span style="color:#f0883e;font-family:monospace">_</span><span style="color:#e6edf3">"</span></div>
+      <div style="margin-top:0.9rem;border-top:1px solid #2d2820;padding-top:0.7rem;">
+        <div><span class="dim">Token appended → now predicts the next:</span> <span style="color:#ede8e0">"…in Paris</span><span style="color:#df6b52;font-family:monospace">_</span><span style="color:#ede8e0">"</span></div>
         <div style="padding-left:1.2rem;margin-top:0.3rem;">
-          <span style="color:#7ee787;font-family:monospace">","</span>  <span class="dim">← 61% &nbsp;</span>
-          <span style="color:#8b949e;font-family:monospace">"."</span>  <span class="dim">← 22% &nbsp;</span>
-          <span style="color:#8b949e;font-family:monospace">"and"</span>  <span class="dim">← 8%</span>
+          <span style="color:#6bb99a;font-family:monospace">","</span>  <span class="dim">← 61% &nbsp;</span>
+          <span style="color:#9a9188;font-family:monospace">"."</span>  <span class="dim">← 22% &nbsp;</span>
+          <span style="color:#9a9188;font-family:monospace">"and"</span>  <span class="dim">← 8%</span>
         </div>
-        <div style="margin-top:0.6rem;color:#8b949e;font-size:0.85em;">Repeats until end-of-sequence token or max length.</div>
+        <div style="margin-top:0.6rem;color:#9a9188;font-size:0.85em;">Repeats until end-of-sequence token or max length.</div>
       </div>
     </div>
   </div>
@@ -303,18 +303,18 @@ h3 {
 <div class="slide" data-slide="3">
   <span class="part-label">Foundation — Step 2 of 3</span>
   <h2>Add Thinking: Reason Before Answering</h2>
-  <p class="subtitle">Chain-of-thought prompting (and later o1-style reasoning) lets the model plan before committing to an answer. Huge jump in capability.</p>
+  <p class="subtitle">Chain-of-thought prompting (and o1-style reasoning) gives the model space to work through a problem before committing to an answer. This changed things substantially.</p>
   <div class="diagram" style="max-width:680px">
-    <div><span class="dim">Task:</span>  <span style="color:#e6edf3">"This test fails intermittently. Why?"</span></div>
+    <div><span class="dim">Task:</span>  <span style="color:#ede8e0">"This test fails intermittently. Why?"</span></div>
     <div style="margin-top:0.8rem"><span class="label">&lt;thinking&gt;</span></div>
-    <div style="padding-left:1.2rem; margin-top:0.3rem; color:#8b949e; font-size:0.9em; line-height:1.6">
+    <div style="padding-left:1.2rem; margin-top:0.3rem; color:#9a9188; font-size:0.9em; line-height:1.6">
       The test touches a shared cache...<br/>
       Two threads could write simultaneously...<br/>
       Race condition on cache.set() — not thread-safe...<br/>
       Fix: add a lock, or use an atomic operation.
     </div>
     <div style="margin-top:0.3rem"><span class="label">&lt;/thinking&gt;</span></div>
-    <div style="margin-top:0.6rem; color:#7ee787">"The test has a race condition on the shared cache. Add a threading.Lock around cache.set()."</div>
+    <div style="margin-top:0.6rem; color:#6bb99a">"The test has a race condition on the shared cache. Add a threading.Lock around cache.set()."</div>
   </div>
 </div>
 
@@ -322,44 +322,44 @@ h3 {
 <div class="slide" data-slide="4">
   <span class="part-label">Foundation — Step 3 of 3</span>
   <h2>Add Tool Calls: Act in the World</h2>
-  <p class="subtitle">The model can now pause, call a tool, observe the result, and continue reasoning. It's no longer just text in, text out.</p>
+  <p class="subtitle">The model can pause mid-response, call a tool, and continue from where it left off. Text in, real actions out.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;max-width:920px;margin-top:0.8rem;">
     <!-- Left: conceptual loop -->
     <div class="diagram" style="font-size:0.82rem;line-height:1.8;">
       <div class="dim" style="font-size:0.75rem;margin-bottom:0.4rem;">Conceptual flow</div>
-      <div><span class="dim">Task:</span> <span style="color:#e6edf3">"Run tests, fix failures."</span></div>
+      <div><span class="dim">Task:</span> <span style="color:#ede8e0">"Run tests, fix failures."</span></div>
       <div style="margin-top:0.5rem">
-        <span class="label">→ tool:</span> <span style="color:#e6edf3">run_shell("pytest tests/")</span>
+        <span class="label">→ tool:</span> <span style="color:#ede8e0">run_shell("pytest tests/")</span>
       </div>
-      <div style="padding-left:1em;color:#8b949e;font-size:0.85em;">FAILED test_user.py::test_login — 401</div>
+      <div style="padding-left:1em;color:#9a9188;font-size:0.85em;">FAILED test_user.py::test_login — 401</div>
       <div style="margin-top:0.3rem">
-        <span class="label">→ tool:</span> <span style="color:#e6edf3">read_file("src/auth.py")</span>
+        <span class="label">→ tool:</span> <span style="color:#ede8e0">read_file("src/auth.py")</span>
       </div>
-      <div style="padding-left:1em;color:#8b949e;font-size:0.85em;">…off-by-one on token expiry seconds…</div>
+      <div style="padding-left:1em;color:#9a9188;font-size:0.85em;">…off-by-one on token expiry seconds…</div>
       <div style="margin-top:0.3rem">
-        <span class="label">→ tool:</span> <span style="color:#e6edf3">edit_file("src/auth.py", fix)</span>
+        <span class="label">→ tool:</span> <span style="color:#ede8e0">edit_file("src/auth.py", fix)</span>
       </div>
       <div style="margin-top:0.3rem">
-        <span class="label">→ tool:</span> <span style="color:#e6edf3">run_shell("pytest tests/")</span> <span style="color:#7ee787">✓</span>
+        <span class="label">→ tool:</span> <span style="color:#ede8e0">run_shell("pytest tests/")</span> <span style="color:#6bb99a">✓</span>
       </div>
     </div>
     <!-- Right: what the model actually emits -->
     <div>
       <div class="dim" style="font-size:0.75rem;margin-bottom:0.4rem;">What the model actually emits (Claude / Anthropic format)</div>
-      <div style="background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:0.7rem 0.85rem;font-family:'SF Mono','Fira Code',monospace;font-size:0.68rem;line-height:1.65;overflow:hidden;">
-        <div style="color:#8b949e;">// model streams these tokens verbatim</div>
-        <div style="color:#58a6ff;">&lt;function_calls&gt;</div>
-        <div style="padding-left:1em;color:#58a6ff;">&lt;invoke name=<span style="color:#7ee787;">"run_shell"</span>&gt;</div>
-        <div style="padding-left:2em;color:#58a6ff;">&lt;parameter name=<span style="color:#7ee787;">"cmd"</span>&gt;<span style="color:#e6edf3;">pytest tests/</span>&lt;/parameter&gt;</div>
-        <div style="padding-left:1em;color:#58a6ff;">&lt;/invoke&gt;</div>
-        <div style="color:#58a6ff;">&lt;/function_calls&gt;</div>
-        <div style="margin-top:0.5rem;color:#8b949e;">// harness parses, executes, injects result:</div>
-        <div style="color:#58a6ff;">&lt;function_results&gt;</div>
-        <div style="padding-left:1em;color:#e6edf3;">FAILED test_user.py — AssertionError: 401</div>
-        <div style="color:#58a6ff;">&lt;/function_results&gt;</div>
-        <div style="margin-top:0.5rem;color:#8b949e;">// model continues generating…</div>
+      <div style="background:#111009;border:1px solid #2d2820;border-radius:6px;padding:0.7rem 0.85rem;font-family:'SF Mono','Fira Code',monospace;font-size:0.68rem;line-height:1.65;overflow:hidden;">
+        <div style="color:#9a9188;">// model streams these tokens verbatim</div>
+        <div style="color:#e6a84a;">&lt;function_calls&gt;</div>
+        <div style="padding-left:1em;color:#e6a84a;">&lt;invoke name=<span style="color:#6bb99a;">"run_shell"</span>&gt;</div>
+        <div style="padding-left:2em;color:#e6a84a;">&lt;parameter name=<span style="color:#6bb99a;">"cmd"</span>&gt;<span style="color:#ede8e0;">pytest tests/</span>&lt;/parameter&gt;</div>
+        <div style="padding-left:1em;color:#e6a84a;">&lt;/invoke&gt;</div>
+        <div style="color:#e6a84a;">&lt;/function_calls&gt;</div>
+        <div style="margin-top:0.5rem;color:#9a9188;">// harness parses, executes, injects result:</div>
+        <div style="color:#e6a84a;">&lt;function_results&gt;</div>
+        <div style="padding-left:1em;color:#ede8e0;">FAILED test_user.py — AssertionError: 401</div>
+        <div style="color:#e6a84a;">&lt;/function_results&gt;</div>
+        <div style="margin-top:0.5rem;color:#9a9188;">// model continues generating…</div>
       </div>
-      <div style="font-size:0.72rem;color:#8b949e;margin-top:0.5rem;">Every model has its own token dialect. The harness parses it and runs the real command. The model never executes — it only <em>describes</em>.</div>
+      <div style="font-size:0.72rem;color:#9a9188;margin-top:0.5rem;">Every model has its own token dialect. The harness parses it and runs the real command. The model never executes — it only <em>describes</em>.</div>
     </div>
   </div>
 </div>
@@ -375,27 +375,27 @@ h3 {
     <!-- Left: the two actors -->
     <div style="display:flex;flex-direction:column;gap:0.5rem;">
       <!-- Harness box -->
-      <div style="border:2px solid #7ee787;border-radius:8px;padding:0.65rem 0.9rem;background:#7ee78710;">
-        <div style="color:#7ee787;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Harness &nbsp;·&nbsp; runs on your machine</div>
+      <div style="border:2px solid #6bb99a;border-radius:8px;padding:0.65rem 0.9rem;background:#6bb99a10;">
+        <div style="color:#6bb99a;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Harness &nbsp;·&nbsp; runs on your machine</div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #7ee787;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" style="color:#e6edf3;text-decoration:none;">Claude Code</a></span>
-          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #7ee787;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:#e6edf3;text-decoration:none;">pi</a></span>
-          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #7ee787;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://cursor.com" target="_blank" style="color:#e6edf3;text-decoration:none;">Cursor</a></span>
-          <span style="font-size:0.78rem;color:#8b949e;border:1px dashed #7ee78766;border-radius:5px;padding:0.15rem 0.5rem;">Pi…</span>
+          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" style="color:#ede8e0;text-decoration:none;">Claude Code</a></span>
+          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:#ede8e0;text-decoration:none;">pi</a></span>
+          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://cursor.com" target="_blank" style="color:#ede8e0;text-decoration:none;">Cursor</a></span>
+          <span style="font-size:0.78rem;color:#9a9188;border:1px dashed #6bb99a66;border-radius:5px;padding:0.15rem 0.5rem;">Pi…</span>
         </div>
-        <div style="color:#8b949e;font-size:0.72rem;margin-top:0.4rem;">Reads codebase · manages context · executes tools locally · provides UI</div>
+        <div style="color:#9a9188;font-size:0.72rem;margin-top:0.4rem;">Reads codebase · manages context · executes tools locally · provides UI</div>
       </div>
       <!-- Provider box -->
-      <div style="border:2px solid #f0883e;border-radius:8px;padding:0.65rem 0.9rem;background:#f0883e10;">
-        <div style="color:#f0883e;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Provider &nbsp;·&nbsp; remote GPU cluster</div>
+      <div style="border:2px solid #df6b52;border-radius:8px;padding:0.65rem 0.9rem;background:#df6b5210;">
+        <div style="color:#df6b52;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Provider &nbsp;·&nbsp; remote GPU cluster</div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #f0883e;border-radius:5px;padding:0.15rem 0.5rem;">Anthropic</span>
-          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #f0883e;border-radius:5px;padding:0.15rem 0.5rem;">OpenAI</span>
-          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #f0883e;border-radius:5px;padding:0.15rem 0.5rem;">Google</span>
-          <span style="font-size:0.78rem;color:#e6edf3;border:1px solid #f0883e;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://io.net" target="_blank" style="color:#e6edf3;text-decoration:none;">io.net</a></span>
-          <span style="font-size:0.78rem;color:#8b949e;border:1px dashed #f0883e66;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://openrouter.ai" target="_blank" style="color:#8b949e;text-decoration:none;">via OpenRouter…</a></span>
+          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">Anthropic</span>
+          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">OpenAI</span>
+          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">Google</span>
+          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://io.net" target="_blank" style="color:#ede8e0;text-decoration:none;">io.net</a></span>
+          <span style="font-size:0.78rem;color:#9a9188;border:1px dashed #df6b5266;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://openrouter.ai" target="_blank" style="color:#9a9188;text-decoration:none;">via OpenRouter…</a></span>
         </div>
-        <div style="color:#8b949e;font-size:0.72rem;margin-top:0.4rem;">Runs model inference · prices vary 3–5× for the same model across providers</div>
+        <div style="color:#9a9188;font-size:0.72rem;margin-top:0.4rem;">Runs model inference · prices vary 3–5× for the same model across providers</div>
       </div>
     </div>
 
@@ -403,31 +403,31 @@ h3 {
     <div style="font-size:0.78rem;line-height:1;">
       <div style="display:flex;flex-direction:column;gap:0.32rem;">
         <div style="display:flex;gap:0.55rem;align-items:flex-start;">
-          <div style="color:#7ee787;font-weight:700;min-width:1.2em;">1</div>
-          <div><span style="color:#e6edf3;">Harness sends prompt</span> <span style="color:#8b949e;">— context + codebase snippets + tool definitions</span></div>
+          <div style="color:#6bb99a;font-weight:700;min-width:1.2em;">1</div>
+          <div><span style="color:#ede8e0;">Harness sends prompt</span> <span style="color:#9a9188;">— context + codebase snippets + tool definitions</span></div>
         </div>
-        <div style="padding-left:1.75em;color:#30363d;font-size:1rem;">↓</div>
+        <div style="padding-left:1.75em;color:#2d2820;font-size:1rem;">↓</div>
         <div style="display:flex;gap:0.55rem;align-items:flex-start;">
-          <div style="color:#f0883e;font-weight:700;min-width:1.2em;">2</div>
-          <div><span style="color:#e6edf3;">Model generates tokens</span> <span style="color:#8b949e;">— may include a tool call</span> <span style="color:#58a6ff;font-size:0.72em;">&lt;function_calls&gt;…&lt;/function_calls&gt;</span></div>
+          <div style="color:#df6b52;font-weight:700;min-width:1.2em;">2</div>
+          <div><span style="color:#ede8e0;">Model generates tokens</span> <span style="color:#9a9188;">— may include a tool call</span> <span style="color:#e6a84a;font-size:0.72em;">&lt;function_calls&gt;…&lt;/function_calls&gt;</span></div>
         </div>
-        <div style="padding-left:1.75em;color:#30363d;font-size:1rem;">↓</div>
+        <div style="padding-left:1.75em;color:#2d2820;font-size:1rem;">↓</div>
         <div style="display:flex;gap:0.55rem;align-items:flex-start;">
-          <div style="color:#7ee787;font-weight:700;min-width:1.2em;">3</div>
-          <div><span style="color:#e6edf3;">Harness parses &amp; executes</span> <span style="color:#8b949e;">— runs bash, reads file, edits code — on the local machine</span></div>
+          <div style="color:#6bb99a;font-weight:700;min-width:1.2em;">3</div>
+          <div><span style="color:#ede8e0;">Harness parses &amp; executes</span> <span style="color:#9a9188;">— runs bash, reads file, edits code — on the local machine</span></div>
         </div>
-        <div style="padding-left:1.75em;color:#30363d;font-size:1rem;">↓</div>
+        <div style="padding-left:1.75em;color:#2d2820;font-size:1rem;">↓</div>
         <div style="display:flex;gap:0.55rem;align-items:flex-start;">
-          <div style="color:#7ee787;font-weight:700;min-width:1.2em;">4</div>
-          <div><span style="color:#e6edf3;">Tool result sent back</span> <span style="color:#8b949e;">— appended to context window at the provider</span></div>
+          <div style="color:#6bb99a;font-weight:700;min-width:1.2em;">4</div>
+          <div><span style="color:#ede8e0;">Tool result sent back</span> <span style="color:#9a9188;">— appended to context window at the provider</span></div>
         </div>
-        <div style="padding-left:1.75em;color:#30363d;font-size:1rem;">↓</div>
+        <div style="padding-left:1.75em;color:#2d2820;font-size:1rem;">↓</div>
         <div style="display:flex;gap:0.55rem;align-items:flex-start;">
-          <div style="color:#f0883e;font-weight:700;min-width:1.2em;">5</div>
-          <div><span style="color:#e6edf3;">Model continues</span> <span style="color:#8b949e;">— uses result to reason, calls more tools or replies</span></div>
+          <div style="color:#df6b52;font-weight:700;min-width:1.2em;">5</div>
+          <div><span style="color:#ede8e0;">Model continues</span> <span style="color:#9a9188;">— uses result to reason, calls more tools or replies</span></div>
         </div>
-        <div style="padding-left:1.75em;color:#30363d;font-size:1rem;">↺</div>
-        <div style="padding-left:1.75em;color:#8b949e;font-size:0.72rem;">…repeats until task done or human takes over</div>
+        <div style="padding-left:1.75em;color:#2d2820;font-size:1rem;">↺</div>
+        <div style="padding-left:1.75em;color:#9a9188;font-size:0.72rem;">…repeats until task done or human takes over</div>
       </div>
     </div>
   </div>
@@ -437,7 +437,7 @@ h3 {
 <div class="slide" data-slide="5">
   <span class="part-label">Part 1 — The New Reality</span>
   <h2>The Models Finally Got Good</h2>
-  <p class="subtitle">We've moved from autocomplete to reasoning agents. The best way to measure that? <span class="emphasis">Feedback loop length</span> — how long an agent can work on its own before it needs you.</p>
+  <p class="subtitle">We went from autocomplete to reasoning agents capable of multi-step work. A useful measure: <span class="emphasis">feedback loop length</span> — how long an agent runs before needing your input.</p>
   <ul class="points">
     <li>Longer feedback loop = more complex tasks the agent can handle</li>
     <li>We went from autocompleting a line to 30-minute unsupervised tasks</li>
@@ -448,79 +448,79 @@ h3 {
 <div class="slide" data-slide="6">
   <span class="part-label">Part 1 — The New Reality</span>
   <h2>Feedback Loop Length Is Everything</h2>
-  <p class="subtitle" style="margin-bottom:0.6rem">METR benchmarks how long a model can work on a research task before needing help — doubling every ~7 months. (<a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" style="color:var(--accent);text-decoration:none;">Kwa et al. 2025</a> · <a href="https://metr.org" target="_blank" style="color:var(--accent);text-decoration:none;">metr.org</a>)</p>
+  <p class="subtitle" style="margin-bottom:0.6rem">METR tracks how long a model can work unsupervised on a research task — doubling roughly every 7 months. (<a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" style="color:var(--accent);text-decoration:none;">Kwa et al. 2025</a>, <a href="https://metr.org" target="_blank" style="color:var(--accent);text-decoration:none;">metr.org</a>)</p>
   <div style="width:100%;max-width:860px;">
     <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
-      <rect x="80" y="10" width="660" height="260" rx="4" fill="#161b22" stroke="#30363d"/>
-      <line x1="80" y1="270" x2="740" y2="270" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="206" x2="740" y2="206" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="157" x2="740" y2="157" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="119" x2="740" y2="119" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="70" x2="740" y2="70" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="21" x2="740" y2="21" stroke="#30363d" stroke-dasharray="3,4"/>
-      <line x1="80" y1="10" x2="740" y2="10" stroke="#30363d" stroke-dasharray="3,4"/>
-      <text x="76" y="274" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">3 sec</text>
-      <text x="76" y="210" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">1 min</text>
-      <text x="76" y="161" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">10 min</text>
-      <text x="76" y="123" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">1 hr</text>
-      <text x="76" y="74" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">10 hr</text>
-      <text x="76" y="25" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">100 hr</text>
-      <text x="76" y="14" fill="#8b949e" font-size="13" text-anchor="end" font-family="Inter,sans-serif">1 week</text>
-      <text x="121" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2019</text>
-      <text x="204" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2020</text>
-      <text x="286" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2021</text>
-      <text x="369" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2022</text>
-      <text x="451" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2023</text>
-      <text x="534" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2024</text>
-      <text x="616" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2025</text>
-      <text x="699" y="288" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">2026</text>
+      <rect x="80" y="10" width="660" height="260" rx="4" fill="#1c1915" stroke="#2d2820"/>
+      <line x1="80" y1="270" x2="740" y2="270" stroke="#2d2820" stroke-dasharray="3,4"/>
+      <line x1="80" y1="206" x2="740" y2="206" stroke="#2d2820" stroke-dasharray="3,4"/>
+      <line x1="80" y1="157" x2="740" y2="157" stroke="#2d2820" stroke-dasharray="3,4"/>
+      <line x1="80" y1="119" x2="740" y2="119" stroke="#2d2820" stroke-dasharray="3,4"/>
+      <line x1="80" y1="70" x2="740" y2="70" stroke="#2d2820" stroke-dasharray="3,4"/>
+      <line x1="80" y1="21" x2="740" y2="21" stroke="#2d2820" stroke-dasharray="3,4"/>
+      <line x1="80" y1="10" x2="740" y2="10" stroke="#2d2820" stroke-dasharray="3,4"/>
+      <text x="76" y="274" fill="#9a9188" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif">3 sec</text>
+      <text x="76" y="210" fill="#9a9188" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif">1 min</text>
+      <text x="76" y="161" fill="#9a9188" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif">10 min</text>
+      <text x="76" y="123" fill="#9a9188" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif">1 hr</text>
+      <text x="76" y="74" fill="#9a9188" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif">10 hr</text>
+      <text x="76" y="25" fill="#9a9188" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif">100 hr</text>
+      <text x="76" y="14" fill="#9a9188" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif">1 week</text>
+      <text x="121" y="288" fill="#9a9188" font-size="13" text-anchor="middle" font-family="DM Sans,sans-serif">2019</text>
+      <text x="204" y="288" fill="#9a9188" font-size="13" text-anchor="middle" font-family="DM Sans,sans-serif">2020</text>
+      <text x="286" y="288" fill="#9a9188" font-size="13" text-anchor="middle" font-family="DM Sans,sans-serif">2021</text>
+      <text x="369" y="288" fill="#9a9188" font-size="13" text-anchor="middle" font-family="DM Sans,sans-serif">2022</text>
+      <text x="451" y="288" fill="#9a9188" font-size="13" text-anchor="middle" font-family="DM Sans,sans-serif">2023</text>
+      <text x="534" y="288" fill="#9a9188" font-size="13" text-anchor="middle" font-family="DM Sans,sans-serif">2024</text>
+      <text x="616" y="288" fill="#9a9188" font-size="13" text-anchor="middle" font-family="DM Sans,sans-serif">2025</text>
+      <text x="699" y="288" fill="#9a9188" font-size="13" text-anchor="middle" font-family="DM Sans,sans-serif">2026</text>
       <!-- GPT-2 2019-02-14 0.1min -->
-      <circle cx="90" cy="268" r="5" fill="#8b949e"/>
-      <text x="99" y="272" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">GPT-2</text>
+      <circle cx="90" cy="268" r="5" fill="#9a9188"/>
+      <text x="99" y="272" fill="#9a9188" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">GPT-2</text>
       <!-- GPT-3.5 2022-03-15 0.6min -->
-      <circle cx="344" cy="217" r="5" fill="#8b949e"/>
-      <text x="353" y="221" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">GPT-3.5</text>
+      <circle cx="344" cy="217" r="5" fill="#9a9188"/>
+      <text x="353" y="221" fill="#9a9188" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">GPT-3.5</text>
       <!-- GPT-4 2023-03-14 4.0min -->
-      <circle cx="427" cy="177" r="5" fill="#8b949e"/>
-      <text x="436" y="181" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">GPT-4</text>
+      <circle cx="427" cy="177" r="5" fill="#9a9188"/>
+      <text x="436" y="181" fill="#9a9188" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">GPT-4</text>
       <!-- GPT-4o 2024-05-13 7.0min -->
-      <circle cx="523" cy="165" r="5" fill="#8b949e"/>
-      <text x="532" y="169" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">GPT-4o</text>
+      <circle cx="523" cy="165" r="5" fill="#9a9188"/>
+      <text x="532" y="169" fill="#9a9188" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">GPT-4o</text>
       <!-- Claude 3.5S 2024-10-22 20.5min -->
-      <circle cx="559" cy="142" r="6" fill="#58a6ff"/>
-      <text x="569" y="148" fill="#58a6ff" font-size="13" font-family="Inter,sans-serif" font-weight="600">Sonnet 3.5</text>
+      <circle cx="559" cy="142" r="6" fill="#e6a84a"/>
+      <text x="569" y="148" fill="#e6a84a" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">Sonnet 3.5</text>
       <!-- o3 2025-04-16 119.7min -->
-      <circle cx="599" cy="104" r="6" fill="#58a6ff"/>
-      <text x="609" y="110" fill="#58a6ff" font-size="13" font-family="Inter,sans-serif" font-weight="600">o3</text>
+      <circle cx="599" cy="104" r="6" fill="#e6a84a"/>
+      <text x="609" y="110" fill="#e6a84a" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">o3</text>
       <!-- Claude Opus 4.5 2025-11-24 293.0min -->
-      <circle cx="649" cy="85" r="6" fill="#7ee787"/>
-      <text x="641" y="79" fill="#7ee787" font-size="13" text-anchor="end" font-family="Inter,sans-serif" font-weight="600">Opus 4.5</text>
+      <circle cx="649" cy="85" r="6" fill="#6bb99a"/>
+      <text x="641" y="79" fill="#6bb99a" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif" font-weight="600">Opus 4.5</text>
       <!-- Claude Opus 4.6 2026-02-05 718.8min -->
-      <circle cx="665" cy="66" r="6" fill="#7ee787"/>
-      <text x="657" y="60" fill="#7ee787" font-size="13" text-anchor="end" font-family="Inter,sans-serif" font-weight="600">Opus 4.6</text>
-      <line x1="740" y1="157" x2="898" y2="157" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
-      <line x1="740" y1="90" x2="898" y2="90" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
+      <circle cx="665" cy="66" r="6" fill="#6bb99a"/>
+      <text x="657" y="60" fill="#6bb99a" font-size="13" text-anchor="end" font-family="DM Sans,sans-serif" font-weight="600">Opus 4.6</text>
+      <line x1="740" y1="157" x2="898" y2="157" stroke="#2d2820" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="740" y1="90" x2="898" y2="90" stroke="#2d2820" stroke-width="1" stroke-dasharray="3,3"/>
       <!-- Era 1: Autocomplete (gray) -->
-      <line x1="744" y1="157" x2="744" y2="270" stroke="#8b949e" stroke-width="1.2"/>
-      <line x1="744" y1="157" x2="749" y2="157" stroke="#8b949e" stroke-width="1.2"/>
-      <line x1="744" y1="270" x2="749" y2="270" stroke="#8b949e" stroke-width="1.2"/>
-      <text x="754" y="206" fill="#8b949e" font-size="13" font-family="Inter,sans-serif" font-weight="600">Autocomplete</text>
-      <text x="754" y="222" fill="#8b949e" font-size="12" font-family="Inter,sans-serif">write a line at a time</text>
+      <line x1="744" y1="157" x2="744" y2="270" stroke="#9a9188" stroke-width="1.2"/>
+      <line x1="744" y1="157" x2="749" y2="157" stroke="#9a9188" stroke-width="1.2"/>
+      <line x1="744" y1="270" x2="749" y2="270" stroke="#9a9188" stroke-width="1.2"/>
+      <text x="754" y="206" fill="#9a9188" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">Autocomplete</text>
+      <text x="754" y="222" fill="#9a9188" font-size="12" font-family="DM Sans,sans-serif">write a line at a time</text>
       <!-- Era 2: Supervised (blue) -->
-      <line x1="744" y1="90" x2="744" y2="157" stroke="#58a6ff" stroke-width="1.2"/>
-      <line x1="744" y1="90" x2="749" y2="90" stroke="#58a6ff" stroke-width="1.2"/>
-      <line x1="744" y1="157" x2="749" y2="157" stroke="#58a6ff" stroke-width="1.2"/>
-      <text x="754" y="111" fill="#58a6ff" font-size="13" font-family="Inter,sans-serif" font-weight="600">Supervised agent</text>
-      <text x="754" y="127" fill="#58a6ff" font-size="12" font-family="Inter,sans-serif">tell it what to do,</text>
-      <text x="754" y="142" fill="#58a6ff" font-size="12" font-family="Inter,sans-serif">watch it work</text>
+      <line x1="744" y1="90" x2="744" y2="157" stroke="#e6a84a" stroke-width="1.2"/>
+      <line x1="744" y1="90" x2="749" y2="90" stroke="#e6a84a" stroke-width="1.2"/>
+      <line x1="744" y1="157" x2="749" y2="157" stroke="#e6a84a" stroke-width="1.2"/>
+      <text x="754" y="111" fill="#e6a84a" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">Supervised agent</text>
+      <text x="754" y="127" fill="#e6a84a" font-size="12" font-family="DM Sans,sans-serif">tell it what to do,</text>
+      <text x="754" y="142" fill="#e6a84a" font-size="12" font-family="DM Sans,sans-serif">watch it work</text>
       <!-- Era 3: Autonomous (green) -->
-      <line x1="744" y1="66" x2="744" y2="90" stroke="#7ee787" stroke-width="1.2"/>
-      <line x1="744" y1="66" x2="749" y2="66" stroke="#7ee787" stroke-width="1.2"/>
-      <line x1="744" y1="90" x2="749" y2="90" stroke="#7ee787" stroke-width="1.2"/>
-      <text x="754" y="66" fill="#7ee787" font-size="13" font-family="Inter,sans-serif" font-weight="600">Autonomous agent</text>
-      <text x="754" y="82" fill="#7ee787" font-size="12" font-family="Inter,sans-serif">draft a plan, hand off,</text>
-      <text x="754" y="97" fill="#7ee787" font-size="12" font-family="Inter,sans-serif">come back to a PR</text>
-      <text x="740" y="302" fill="#8b949e" font-size="10" text-anchor="end" font-family="Inter,sans-serif">Source: METR (metr.org) — 50% task-completion time horizon</text>
+      <line x1="744" y1="66" x2="744" y2="90" stroke="#6bb99a" stroke-width="1.2"/>
+      <line x1="744" y1="66" x2="749" y2="66" stroke="#6bb99a" stroke-width="1.2"/>
+      <line x1="744" y1="90" x2="749" y2="90" stroke="#6bb99a" stroke-width="1.2"/>
+      <text x="754" y="66" fill="#6bb99a" font-size="13" font-family="DM Sans,sans-serif" font-weight="600">Autonomous agent</text>
+      <text x="754" y="82" fill="#6bb99a" font-size="12" font-family="DM Sans,sans-serif">draft a plan, hand off,</text>
+      <text x="754" y="97" fill="#6bb99a" font-size="12" font-family="DM Sans,sans-serif">come back to a PR</text>
+      <text x="740" y="302" fill="#9a9188" font-size="10" text-anchor="end" font-family="DM Sans,sans-serif">Source: METR (metr.org) — 50% task-completion time horizon</text>
     </svg>
   </div>
 </div>
@@ -573,11 +573,11 @@ h3 {
 <div class="slide" data-slide="9">
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>The Bottleneck Moved</h2>
-  <p class="subtitle" style="margin-bottom:1rem">Agents cut coding time roughly in half. That's great — but it just exposed the next bottleneck. Every stage needs to come down.</p>
+  <p class="subtitle" style="margin-bottom:1rem">Agents cut coding time roughly in half, which surfaced the next constraint. Reviewing and validating is now the slow part.</p>
 
   <div style="width:100%;max-width:820px;">
     <!-- Header row -->
-    <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.4rem;font-size:0.75rem;color:#8b949e;text-align:center;">
+    <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.4rem;font-size:0.75rem;color:#9a9188;text-align:center;">
       <div></div>
       <div>Ideation &amp;<br>Planning</div>
       <div>Coding</div>
@@ -588,35 +588,35 @@ h3 {
 
     <!-- Before row -->
     <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;margin-bottom:0.5rem;">
-      <div style="font-size:0.78rem;color:#8b949e;font-weight:600;">Before agents</div>
-      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <div style="font-size:0.78rem;color:#9a9188;font-weight:600;">Before agents</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
       <!-- Coding was the bottleneck — highlighted orange, tallest -->
-      <div style="background:#f0883e22;border:2px solid #f0883e;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#f0883e;font-weight:600;">⚠ bottleneck</div>
-      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
-      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
-      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <div style="background:#df6b5222;border:2px solid #df6b52;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#df6b52;font-weight:600;">⚠ bottleneck</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
     </div>
 
     <!-- After row -->
     <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;margin-bottom:0.8rem;">
-      <div style="font-size:0.78rem;color:#8b949e;font-weight:600;">With agents now</div>
-      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <div style="font-size:0.78rem;color:#9a9188;font-weight:600;">With agents now</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
       <!-- Coding got fast — green, small -->
-      <div style="background:#7ee78722;border:1px solid #7ee787;border-radius:4px;height:1.1rem;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#7ee787;">~2× faster</div>
+      <div style="background:#6bb99a22;border:1px solid #6bb99a;border-radius:4px;height:1.1rem;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#6bb99a;">~2× faster</div>
       <!-- Validation is the new bottleneck -->
-      <div style="background:#f0883e22;border:2px solid #f0883e;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#f0883e;font-weight:600;">⚠ bottleneck</div>
-      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
-      <div style="background:#30363d;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#8b949e;">~normal</div>
+      <div style="background:#df6b5222;border:2px solid #df6b52;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#df6b52;font-weight:600;">⚠ bottleneck</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
     </div>
 
     <!-- Agent effectiveness row -->
     <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;">
-      <div style="font-size:0.78rem;color:#8b949e;font-weight:600;">Agent<br>effectiveness</div>
-      <div style="background:#58a6ff18;border:1px solid #58a6ff66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#58a6ff;">partial</div>
-      <div style="background:#7ee78733;border:1px solid #7ee787;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#7ee787;font-weight:600;">strong ✓</div>
-      <div style="background:#58a6ff18;border:1px solid #58a6ff66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#58a6ff;">emerging</div>
-      <div style="background:#30363d;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#8b949e;">early</div>
-      <div style="background:#58a6ff18;border:1px solid #58a6ff66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#58a6ff;">partial</div>
+      <div style="font-size:0.78rem;color:#9a9188;font-weight:600;">Agent<br>effectiveness</div>
+      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#e6a84a;">partial</div>
+      <div style="background:#6bb99a33;border:1px solid #6bb99a;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#6bb99a;font-weight:600;">strong ✓</div>
+      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#e6a84a;">emerging</div>
+      <div style="background:#2d2820;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#9a9188;">early</div>
+      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#e6a84a;">partial</div>
     </div>
   </div>
 
@@ -626,7 +626,7 @@ h3 {
 <div class="slide" data-slide="10">
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>The Validation Bottleneck</h2>
-  <p class="subtitle">Coding speed is no longer the bottleneck. Reviewing is. The bottleneck just moved.</p>
+  <p class="subtitle">Writing code got faster. Reviewing it didn't. The constraint shifted but didn't disappear.</p>
   <ul class="points orange">
     <li>We can produce code <span class="emphasis-warn">faster than we can validate it</span></li>
     <li><a href="https://macroscope.app" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">Macroscope</a> on every PR — automated sanity checks, style, logic issues</li>
@@ -641,7 +641,7 @@ h3 {
   <h2>Macroscope — Example Review</h2>
   <p class="subtitle">A real <a href="https://macroscope.app" target="_blank" style="color:var(--accent2);text-decoration:none;">Macroscope</a> comment on a PR — logic analysis, not just style.</p>
   <div style="display:flex;justify-content:center;margin-top:0.6rem;">
-    <img src="static-code-review.png" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #30363d;" alt="Macroscope code review screenshot">
+    <img src="static-code-review.png" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #2d2820;" alt="Macroscope code review screenshot">
   </div>
 </div>
 
@@ -664,7 +664,7 @@ h3 {
   <h2>Exploratory Testing — Example Output</h2>
   <p class="subtitle">A GitHub Issue filed autonomously by the exploratory testing agent — with a full reproduction journey.</p>
   <div style="display:flex;justify-content:center;margin-top:0.6rem;">
-    <img src="exploratory-testing.png" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #30363d;" alt="Exploratory testing GitHub issue screenshot">
+    <img src="exploratory-testing.png" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #2d2820;" alt="Exploratory testing GitHub issue screenshot">
   </div>
 </div>
 
@@ -672,14 +672,14 @@ h3 {
 <div class="slide" data-slide="11">
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>Dev Meets Ops</h2>
-  <p class="subtitle">The loop closes itself. A production error becomes a GitHub Issue becomes a PR — with minimal human initiation.</p>
+  <p class="subtitle">A production error becomes a GitHub Issue becomes a PR — mostly without a human kicking it off.</p>
   <div class="diagram" style="max-width:780px;margin-top:1rem;font-size:0.88rem;line-height:1.9;">
     <div><span class="label">1. Discover:</span> <span class="dim">ES|QL CATEGORIZE clusters millions of logs → ranked error patterns</span></div>
     <div><span class="label">2. Investigate:</span> <span class="dim">Triage Agent runs a protocol-driven investigation — queries telemetry, checks git history, correlates stack traces</span></div>
     <div><span class="label">3. File:</span> <span class="dim">Agent creates a GitHub Issue with root cause, affected versions, and a suggested fix</span></div>
     <div><span class="label">4. Fix:</span> <span class="dim">Coding Agent picks up the issue, drafts a PR</span></div>
     <div><span class="label">5. Validate:</span> <span class="dim">Macroscope + Exploratory Tests run on the PR</span></div>
-    <div><span class="label">6. Ship:</span> <span style="color:#7ee787;">Human approves → merged → deployed</span></div>
+    <div><span class="label">6. Ship:</span> <span style="color:#6bb99a;">Human approves → merged → deployed</span></div>
   </div>
 </div>
 
@@ -689,7 +689,7 @@ h3 {
   <h2>Triage Agent — Example Output</h2>
   <p class="subtitle">The actual GitHub Issue filed autonomously — root cause, affected versions, and a fix suggestion, all included.</p>
   <div style="display:flex;justify-content:center;margin-top:0.6rem;">
-    <img src="error-report.webp" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #30363d;" alt="Error triage report screenshot">
+    <img src="error-report.webp" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #2d2820;" alt="Error triage report screenshot">
   </div>
 </div>
 
@@ -697,58 +697,58 @@ h3 {
 <div class="slide" data-slide="12">
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>The GitHub Switchboard</h2>
-  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate. <span style="color:#58a6ff;font-size:0.85em;">Blue = agent-powered</span></p>
+  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate. <span style="color:#e6a84a;font-size:0.85em;">Blue = agent-powered</span></p>
   <div style="width:100%;max-width:900px;">
     <!-- Top row: inputs -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
-      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">New Idea</div>
-      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">User Feedback</div>
-      <div style="padding:0.55rem 0.8rem;border:1px solid #8b949e;border-radius:8px;font-size:0.88rem;color:#e6edf3;text-align:center;">Production Error</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:0.88rem;color:#ede8e0;text-align:center;">New Idea</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:0.88rem;color:#ede8e0;text-align:center;">User Feedback</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:0.88rem;color:#ede8e0;text-align:center;">Production Error</div>
     </div>
     <!-- Agent tags under inputs -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
-      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Planning Agent scopes the work</div>
-      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Planning Agent scopes the work</div>
-      <div style="font-size:0.7rem;color:#58a6ff;text-align:center;">↓ Triage Agent clusters logs, creates Issue</div>
+      <div style="font-size:0.7rem;color:#e6a84a;text-align:center;">↓ Planning Agent scopes the work</div>
+      <div style="font-size:0.7rem;color:#e6a84a;text-align:center;">↓ Planning Agent scopes the work</div>
+      <div style="font-size:0.7rem;color:#e6a84a;text-align:center;">↓ Triage Agent clusters logs, creates Issue</div>
     </div>
     <!-- Converging arrows -->
-    <div style="text-align:center;color:#8b949e;font-size:0.9rem;line-height:1;margin-bottom:0.25rem;">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
+    <div style="text-align:center;color:#9a9188;font-size:0.9rem;line-height:1;margin-bottom:0.25rem;">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
     <!-- Main flow + human involvement side by side -->
     <div style="display:grid;grid-template-columns:1fr auto;gap:1.2rem;align-items:start;">
       <!-- Flow column -->
       <div style="display:flex;flex-direction:column;gap:0.25rem;align-items:stretch;">
-        <div style="padding:0.65rem 1rem;border:2px solid #e6edf3;border-radius:8px;color:#e6edf3;font-weight:600;text-align:center;">
-          GitHub Issue <span style="font-size:0.72rem;font-weight:400;color:#8b949e;">&nbsp;— auto-created or manual</span>
+        <div style="padding:0.65rem 1rem;border:2px solid #ede8e0;border-radius:8px;color:#ede8e0;font-weight:600;text-align:center;">
+          GitHub Issue <span style="font-size:0.72rem;font-weight:400;color:#9a9188;">&nbsp;— auto-created or manual</span>
         </div>
-        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
-        <div style="padding:0.65rem 1rem;border:1px solid #58a6ff;border-radius:8px;color:#e6edf3;text-align:center;">
+        <div style="text-align:center;color:#e6a84a;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:1px solid #e6a84a;border-radius:8px;color:#ede8e0;text-align:center;">
           Planning / Spec
-          <div style="font-size:0.7rem;color:#58a6ff;margin-top:0.2rem;">agent drafts spec → human approves</div>
+          <div style="font-size:0.7rem;color:#e6a84a;margin-top:0.2rem;">agent drafts spec → human approves</div>
         </div>
-        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
-        <div style="padding:0.65rem 1rem;border:1px solid #58a6ff;border-radius:8px;color:#58a6ff;font-weight:600;text-align:center;">Coding Agent</div>
-        <div style="text-align:center;color:#58a6ff;font-size:0.9rem;line-height:1.4;">↓</div>
-        <div style="padding:0.65rem 1rem;border:2px solid #e6edf3;border-radius:8px;color:#e6edf3;font-weight:600;text-align:center;">Pull Request</div>
+        <div style="text-align:center;color:#e6a84a;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:1px solid #e6a84a;border-radius:8px;color:#e6a84a;font-weight:600;text-align:center;">Coding Agent</div>
+        <div style="text-align:center;color:#e6a84a;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="padding:0.65rem 1rem;border:2px solid #ede8e0;border-radius:8px;color:#ede8e0;font-weight:600;text-align:center;">Pull Request</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.25rem;">
-          <div style="padding:0.35rem 0.6rem;border:1px solid #58a6ff;border-radius:6px;font-size:0.72rem;color:#58a6ff;text-align:center;"><a href="https://macroscope.app" target="_blank" style="color:#58a6ff;text-decoration:none;">Macroscope</a> — static review</div>
-          <div style="padding:0.35rem 0.6rem;border:1px solid #58a6ff;border-radius:6px;font-size:0.72rem;color:#58a6ff;text-align:center;">Exploratory Tests — dynamic</div>
+          <div style="padding:0.35rem 0.6rem;border:1px solid #e6a84a;border-radius:6px;font-size:0.72rem;color:#e6a84a;text-align:center;"><a href="https://macroscope.app" target="_blank" style="color:#e6a84a;text-decoration:none;">Macroscope</a> — static review</div>
+          <div style="padding:0.35rem 0.6rem;border:1px solid #e6a84a;border-radius:6px;font-size:0.72rem;color:#e6a84a;text-align:center;">Exploratory Tests — dynamic</div>
         </div>
       </div>
       <!-- Human involvement column -->
       <div style="display:flex;flex-direction:column;gap:0.3rem;width:195px;padding-top:3.6rem;">
-        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
-          <div style="color:#e6edf3;font-weight:600;">Human: very involved</div>
-          <div style="color:#8b949e;">Architecture &amp; design</div>
+        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#ede8e0;font-weight:600;">Human: very involved</div>
+          <div style="color:#9a9188;">Architecture &amp; design</div>
         </div>
         <div style="height:0.8rem;"></div>
-        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
-          <div style="color:#e6edf3;font-weight:600;">Human: less involved</div>
-          <div style="color:#8b949e;">Review &amp; steer</div>
+        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#ede8e0;font-weight:600;">Human: less involved</div>
+          <div style="color:#9a9188;">Review &amp; steer</div>
         </div>
         <div style="height:0.8rem;"></div>
-        <div style="padding:0.5rem 0.7rem;border:1px solid #e6edf3;border-radius:6px;font-size:0.75rem;">
-          <div style="color:#e6edf3;font-weight:600;">Human: quality gate</div>
-          <div style="color:#8b949e;">Approve or reject</div>
+        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:0.75rem;">
+          <div style="color:#ede8e0;font-weight:600;">Human: quality gate</div>
+          <div style="color:#9a9188;">Approve or reject</div>
         </div>
       </div>
     </div>
@@ -761,7 +761,7 @@ h3 {
 <div class="slide" data-slide="12">
   <span class="part-label">Part 3 — The Stack</span>
   <h2>You Are the Orchestration Layer</h2>
-  <p class="subtitle">Each agent runs its own think→act→observe loop independently. You switch between them — assigning tasks, reviewing outputs, steering direction.</p>
+  <p class="subtitle">Each agent works through its own think→act→observe loop. You move between them: kick off a task, check progress, correct course.</p>
   <div class="two-col" style="gap:3vw;margin-top:1.2rem;max-width:860px;">
     <div class="col">
       <h3>How it works for me today</h3>
@@ -787,7 +787,7 @@ h3 {
 <div class="slide" data-slide="13">
   <span class="part-label">Part 3 — The Stack</span>
   <div style="display:flex;justify-content:center;margin-top:0.6rem;">
-    <img src="pi-env.png" style="max-height:65vh;max-width:100%;border-radius:8px;border:1px solid #30363d;" alt="pi running in split TMux panes">
+    <img src="pi-env.png" style="max-height:65vh;max-width:100%;border-radius:8px;border:1px solid #2d2820;" alt="pi running in split TMux panes">
   </div>
 </div>
 
@@ -795,7 +795,7 @@ h3 {
 <div class="slide" data-slide="13">
   <span class="part-label">Part 3 — The Stack</span>
   <h2>Context Is the New Code</h2>
-  <p class="subtitle">The model is only as good as what you feed it. The real work is curating context.</p>
+  <p class="subtitle">Model quality is fixed — what you can control is what you put in the context window.</p>
   <ul class="points">
     <li><span class="emphasis">Markdown "Skills"</span> — reusable capabilities. Example: <code>analyze_user_feedback.md</code> knows how to summarize thousands of support tickets</li>
     <li>Shared repos with helper scripts that fetch from <span class="emphasis">BigQuery</span>, telemetry, web search — all into the context window</li>
@@ -811,7 +811,7 @@ h3 {
   <div class="two-col" style="grid-template-columns: 1fr 1fr 1fr; gap: 2vw; margin-top:1rem;">
     <div class="col">
       <h3><a href="https://openrouter.ai/anthropic/claude-opus-4-6" target="_blank" style="color:var(--warn);text-decoration:none;">Opus 4.6</a></h3>
-      <div style="font-size:0.8rem;color:#f0883e;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$5 in / $25 out per 1M tokens</div>
+      <div style="font-size:0.8rem;color:#df6b52;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$5 in / $25 out per 1M tokens</div>
       <ul class="points orange">
         <li>Most capable model right now</li>
         <li>Architecture &amp; planning</li>
@@ -820,7 +820,7 @@ h3 {
     </div>
     <div class="col">
       <h3><a href="https://openrouter.ai/z-ai/glm-5.1" target="_blank" style="color:var(--accent2);text-decoration:none;">GLM 5.1</a></h3>
-      <div style="font-size:0.8rem;color:#7ee787;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.95 in / $3.15 out per 1M tokens</div>
+      <div style="font-size:0.8rem;color:#6bb99a;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.95 in / $3.15 out per 1M tokens</div>
       <ul class="points green">
         <li>Open-source (Z.ai)</li>
         <li>Coding &amp; triage</li>
@@ -829,7 +829,7 @@ h3 {
     </div>
     <div class="col">
       <h3><a href="https://openrouter.ai/stepfun/step-3.5-flash" target="_blank" style="color:var(--accent);text-decoration:none;">Step 3.5 Flash</a></h3>
-      <div style="font-size:0.8rem;color:#58a6ff;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.10 in / $0.30 out per 1M tokens</div>
+      <div style="font-size:0.8rem;color:#e6a84a;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.10 in / $0.30 out per 1M tokens</div>
       <ul class="points">
         <li>~50× cheaper than Opus on output</li>
         <li>Great for high-volume loops</li>
@@ -844,7 +844,7 @@ h3 {
 <div class="slide" data-slide="15">
   <span class="part-label">Part 4 — Downsides</span>
   <h2>The Death of "The Zone"</h2>
-  <p class="subtitle">This workflow changes how your brain works. It's not all upside.</p>
+  <p class="subtitle">Working this way has real downsides worth being honest about.</p>
   <ul class="points orange">
     <li>No more 4-hour deep dives — constant <span class="emphasis-warn">context switching</span></li>
     <li>Pattern: assign Agent A a 30-min task → switch → assign Agent B → review A → correct → loop</li>
@@ -858,7 +858,7 @@ h3 {
 <div class="slide" data-slide="16">
   <span class="part-label">Part 4 — Downsides</span>
   <h2>Building the Wrong Things</h2>
-  <p class="subtitle">When it's easy to build, it's easy to build things you don't need. This is a real problem.</p>
+  <p class="subtitle">When building anything takes hours instead of weeks, the cost of a bad idea shrinks — and you build more bad ideas.</p>
   <ul class="points orange">
     <li>Because it's <span class="emphasis-warn">easy to build</span>, we build features that don't solve real problems</li>
     <li>AI-written code still needs human-led maintenance — you still own the debt</li>
@@ -888,7 +888,7 @@ h3 {
 <div class="slide" data-slide="18">
   <span class="part-label">Part 5 — Conclusion</span>
   <h2>Code Is the Universal Language</h2>
-  <p class="subtitle">Agents work best when you turn problems into code. This isn't making code less important — it's making it more important.</p>
+  <p class="subtitle">Agents work best when problems are expressed in code. That makes coding a more central skill, not a less relevant one.</p>
   <ul class="points green">
     <li><span class="emphasis-green">Code is what agents speak fluently.</span> Turn everything into code — config, specs, infra, tests</li>
     <li>More people will code (at least a little) because the barrier to entry dropped</li>
@@ -908,70 +908,70 @@ h3 {
     <svg viewBox="0 0 860 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
       <defs>
         <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-          <path d="M0,0 L7,3.5 L0,7 Z" fill="#58a6ff"/>
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#e6a84a"/>
         </marker>
         <marker id="arrg" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-          <path d="M0,0 L7,3.5 L0,7 Z" fill="#8b949e"/>
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#9a9188"/>
         </marker>
         <marker id="arrh" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-          <path d="M0,0 L7,3.5 L0,7 Z" fill="#e6edf3"/>
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#ede8e0"/>
         </marker>
       </defs>
 
       <!-- Phase boxes: y=60, height=52 -->
       <!-- Plan x=30 -->
-      <rect x="30"  y="60" width="100" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
-      <text x="80"  y="83" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="600" font-family="Inter,sans-serif">Plan</text>
-      <text x="80"  y="100" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Inter,sans-serif">spec agent</text>
+      <rect x="30"  y="60" width="100" height="52" rx="8" fill="#1c1915" stroke="#e6a84a" stroke-width="1.5"/>
+      <text x="80"  y="83" text-anchor="middle" fill="#e6a84a" font-size="13" font-weight="600" font-family="DM Sans,sans-serif">Plan</text>
+      <text x="80"  y="100" text-anchor="middle" fill="#9a9188" font-size="10" font-family="DM Sans,sans-serif">spec agent</text>
 
       <!-- Code x=170 -->
-      <rect x="170" y="60" width="100" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
-      <text x="220" y="83" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="600" font-family="Inter,sans-serif">Code</text>
-      <text x="220" y="100" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Inter,sans-serif">coding agent</text>
+      <rect x="170" y="60" width="100" height="52" rx="8" fill="#1c1915" stroke="#e6a84a" stroke-width="1.5"/>
+      <text x="220" y="83" text-anchor="middle" fill="#e6a84a" font-size="13" font-weight="600" font-family="DM Sans,sans-serif">Code</text>
+      <text x="220" y="100" text-anchor="middle" fill="#9a9188" font-size="10" font-family="DM Sans,sans-serif">coding agent</text>
 
       <!-- Review x=310 -->
-      <rect x="310" y="60" width="100" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
-      <text x="360" y="83" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="600" font-family="Inter,sans-serif">Review</text>
-      <text x="360" y="100" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Inter,sans-serif">Macroscope</text>
+      <rect x="310" y="60" width="100" height="52" rx="8" fill="#1c1915" stroke="#e6a84a" stroke-width="1.5"/>
+      <text x="360" y="83" text-anchor="middle" fill="#e6a84a" font-size="13" font-weight="600" font-family="DM Sans,sans-serif">Review</text>
+      <text x="360" y="100" text-anchor="middle" fill="#9a9188" font-size="10" font-family="DM Sans,sans-serif">Macroscope</text>
 
       <!-- Deploy x=450 -->
-      <rect x="450" y="60" width="100" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
-      <text x="500" y="83" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="600" font-family="Inter,sans-serif">Deploy</text>
-      <text x="500" y="100" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Inter,sans-serif">CI/CD</text>
+      <rect x="450" y="60" width="100" height="52" rx="8" fill="#1c1915" stroke="#e6a84a" stroke-width="1.5"/>
+      <text x="500" y="83" text-anchor="middle" fill="#e6a84a" font-size="13" font-weight="600" font-family="DM Sans,sans-serif">Deploy</text>
+      <text x="500" y="100" text-anchor="middle" fill="#9a9188" font-size="10" font-family="DM Sans,sans-serif">CI/CD</text>
 
       <!-- Observe x=590 -->
-      <rect x="590" y="60" width="100" height="52" rx="8" fill="#161b22" stroke="#7ee787" stroke-width="1.5"/>
-      <text x="640" y="83" text-anchor="middle" fill="#7ee787" font-size="13" font-weight="600" font-family="Inter,sans-serif">Observe</text>
-      <text x="640" y="100" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Inter,sans-serif">APM / logs</text>
+      <rect x="590" y="60" width="100" height="52" rx="8" fill="#1c1915" stroke="#6bb99a" stroke-width="1.5"/>
+      <text x="640" y="83" text-anchor="middle" fill="#6bb99a" font-size="13" font-weight="600" font-family="DM Sans,sans-serif">Observe</text>
+      <text x="640" y="100" text-anchor="middle" fill="#9a9188" font-size="10" font-family="DM Sans,sans-serif">APM / logs</text>
 
       <!-- Triage x=730 -->
-      <rect x="730" y="60" width="100" height="52" rx="8" fill="#161b22" stroke="#7ee787" stroke-width="1.5"/>
-      <text x="780" y="83" text-anchor="middle" fill="#7ee787" font-size="13" font-weight="600" font-family="Inter,sans-serif">Triage</text>
-      <text x="780" y="100" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Inter,sans-serif">triage agent</text>
+      <rect x="730" y="60" width="100" height="52" rx="8" fill="#1c1915" stroke="#6bb99a" stroke-width="1.5"/>
+      <text x="780" y="83" text-anchor="middle" fill="#6bb99a" font-size="13" font-weight="600" font-family="DM Sans,sans-serif">Triage</text>
+      <text x="780" y="100" text-anchor="middle" fill="#9a9188" font-size="10" font-family="DM Sans,sans-serif">triage agent</text>
 
       <!-- Forward arrows between boxes -->
-      <line x1="131" y1="86" x2="169" y2="86" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr)"/>
-      <line x1="271" y1="86" x2="309" y2="86" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr)"/>
-      <line x1="411" y1="86" x2="449" y2="86" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr)"/>
-      <line x1="551" y1="86" x2="589" y2="86" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr)"/>
-      <line x1="691" y1="86" x2="729" y2="86" stroke="#7ee787" stroke-width="1.5" marker-end="url(#arrg)"/>
+      <line x1="131" y1="86" x2="169" y2="86" stroke="#e6a84a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="271" y1="86" x2="309" y2="86" stroke="#e6a84a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="411" y1="86" x2="449" y2="86" stroke="#e6a84a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="551" y1="86" x2="589" y2="86" stroke="#e6a84a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="691" y1="86" x2="729" y2="86" stroke="#6bb99a" stroke-width="1.5" marker-end="url(#arrg)"/>
 
       <!-- Feedback arc: Triage → Plan (bottom) -->
-      <path d="M780,113 L780,170 Q780,185 765,185 L95,185 Q80,185 80,170 L80,113" fill="none" stroke="#7ee787" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrg)"/>
-      <text x="430" y="200" text-anchor="middle" fill="#7ee787" font-size="11" font-family="Inter,sans-serif">auto-creates Issue → feeds back to Plan</text>
+      <path d="M780,113 L780,170 Q780,185 765,185 L95,185 Q80,185 80,170 L80,113" fill="none" stroke="#6bb99a" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrg)"/>
+      <text x="430" y="200" text-anchor="middle" fill="#6bb99a" font-size="11" font-family="DM Sans,sans-serif">auto-creates Issue → feeds back to Plan</text>
 
       <!-- Human input arrows (downward) with labels above -->
       <!-- Human → Plan -->
-      <line x1="80" y1="30" x2="80" y2="59" stroke="#e6edf3" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arrh)"/>
-      <text x="80" y="22" text-anchor="middle" fill="#e6edf3" font-size="10" font-family="Inter,sans-serif">you</text>
+      <line x1="80" y1="30" x2="80" y2="59" stroke="#ede8e0" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arrh)"/>
+      <text x="80" y="22" text-anchor="middle" fill="#ede8e0" font-size="10" font-family="DM Sans,sans-serif">you</text>
 
       <!-- Human → Review -->
-      <line x1="360" y1="30" x2="360" y2="59" stroke="#e6edf3" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arrh)"/>
-      <text x="360" y="22" text-anchor="middle" fill="#e6edf3" font-size="10" font-family="Inter,sans-serif">you</text>
+      <line x1="360" y1="30" x2="360" y2="59" stroke="#ede8e0" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arrh)"/>
+      <text x="360" y="22" text-anchor="middle" fill="#ede8e0" font-size="10" font-family="DM Sans,sans-serif">you</text>
 
       <!-- Human → Deploy -->
-      <line x1="500" y1="30" x2="500" y2="59" stroke="#e6edf3" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arrh)"/>
-      <text x="500" y="22" text-anchor="middle" fill="#e6edf3" font-size="10" font-family="Inter,sans-serif">you</text>
+      <line x1="500" y1="30" x2="500" y2="59" stroke="#ede8e0" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arrh)"/>
+      <text x="500" y="22" text-anchor="middle" fill="#ede8e0" font-size="10" font-family="DM Sans,sans-serif">you</text>
     </svg>
   </div>
 
