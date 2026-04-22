@@ -253,20 +253,20 @@ h3 {
     <div>
       <h3 style="margin-bottom:0.5rem;">Joe Reuter</h3>
       <div class="dim" style="margin-bottom:1.2rem;line-height:1.8;">Tech Lead · <a href="https://elastic.co" target="_blank" style="color:var(--accent);text-decoration:none;">Elastic</a></div>
-      <div style="font-size:0.82rem;color:#9a9188;line-height:1.7;">
+      <div style="font-size:1.3vw;color:#9a9188;line-height:1.7;">
         <strong style="color:#ede8e0;">Elastic</strong> is the company behind the <span style="color:#df6b52">ELK Stack</span> — Elasticsearch, Logstash, Kibana.<br><br>
         Used by thousands of companies to search, observe, and secure their data at scale. Think full-text search, APM, SIEM, log analytics.
       </div>
     </div>
     <div>
       <h3 style="margin-bottom:0.8rem;">Technology journey</h3>
-      <div style="font-size:0.84rem;line-height:2;">
+      <div style="font-size:1.3vw;line-height:2;">
         <div><span style="color:#e6a84a;font-family:monospace;font-size:0.9em;">TypeScript · React · Node.js</span></div>
-        <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;margin-bottom:0.5rem;">Frontend in Kibana — my main thing</div>
+        <div class="dim" style="font-size:1.2vw;margin-top:-0.3rem;margin-bottom:0.5rem;">Frontend in Kibana — my main thing</div>
         <div><span style="color:#df6b52;font-family:monospace;font-size:0.9em;">Java</span></div>
-        <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;margin-bottom:0.5rem;">Elasticsearch core &amp; internals</div>
+        <div class="dim" style="font-size:1.2vw;margin-top:-0.3rem;margin-bottom:0.5rem;">Elasticsearch core &amp; internals</div>
         <div><span style="color:#6bb99a;font-family:monospace;font-size:0.9em;">Go</span></div>
-        <div class="dim" style="font-size:0.78rem;margin-top:-0.3rem;">Data shippers &amp; agents</div>
+        <div class="dim" style="font-size:1.2vw;margin-top:-0.3rem;">Data shippers &amp; agents</div>
       </div>
     </div>
   </div>
@@ -278,7 +278,7 @@ h3 {
   <h2>It Started as Next-Token Prediction</h2>
   <p class="subtitle">The model picks the most likely next token and repeats. Pattern matching over enormous text corpora. One token ≈ ¾ of a word.</p>
   <div class="diagram" style="width:100%">
-    <div style="font-size:0.85rem;line-height:1.9;">
+    <div style="font-size:1.3vw;line-height:1.9;">
       <div><span class="dim">Context so far:</span> <span style="color:#ede8e0">"The Eiffel Tower is located in "</span></div>
       <div style="margin-top:0.8rem"><span class="dim">Model samples the <strong style="color:#ede8e0">next single token</strong>:</span></div>
       <div style="margin-top:0.4rem;padding-left:1.2rem;">
@@ -293,7 +293,7 @@ h3 {
           <span style="color:#9a9188;font-family:monospace">"."</span>  <span class="dim">← 22% &nbsp;</span>
           <span style="color:#9a9188;font-family:monospace">"and"</span>  <span class="dim">← 8%</span>
         </div>
-        <div style="margin-top:0.6rem;color:#9a9188;font-size:0.85em;">Repeats until end-of-sequence token or max length.</div>
+        <div style="margin-top:0.6rem;color:#9a9188;font-size:1em;">Repeats until end-of-sequence token or max length.</div>
       </div>
     </div>
   </div>
@@ -325,17 +325,17 @@ h3 {
   <p class="subtitle">The model can pause mid-response, call a tool, and continue from where it left off. Text in, real actions out.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;width:100%;margin-top:0.8rem;">
     <!-- Left: conceptual loop -->
-    <div class="diagram" style="font-size:0.82rem;line-height:1.8;">
-      <div class="dim" style="font-size:0.75rem;margin-bottom:0.4rem;">Conceptual flow</div>
+    <div class="diagram" style="font-size:1.3vw;line-height:1.8;">
+      <div class="dim" style="font-size:1.2vw;margin-bottom:0.4rem;">Conceptual flow</div>
       <div><span class="dim">Task:</span> <span style="color:#ede8e0">"Run tests, fix failures."</span></div>
       <div style="margin-top:0.5rem">
         <span class="label">→ tool:</span> <span style="color:#ede8e0">run_shell("pytest tests/")</span>
       </div>
-      <div style="padding-left:1em;color:#9a9188;font-size:0.85em;">FAILED test_user.py::test_login — 401</div>
+      <div style="padding-left:1em;color:#9a9188;font-size:1em;">FAILED test_user.py::test_login — 401</div>
       <div style="margin-top:0.3rem">
         <span class="label">→ tool:</span> <span style="color:#ede8e0">read_file("src/auth.py")</span>
       </div>
-      <div style="padding-left:1em;color:#9a9188;font-size:0.85em;">…off-by-one on token expiry seconds…</div>
+      <div style="padding-left:1em;color:#9a9188;font-size:1em;">…off-by-one on token expiry seconds…</div>
       <div style="margin-top:0.3rem">
         <span class="label">→ tool:</span> <span style="color:#ede8e0">edit_file("src/auth.py", fix)</span>
       </div>
@@ -345,8 +345,8 @@ h3 {
     </div>
     <!-- Right: what the model actually emits -->
     <div>
-      <div class="dim" style="font-size:0.75rem;margin-bottom:0.4rem;">What the model actually emits (Claude / Anthropic format)</div>
-      <div style="background:#111009;border:1px solid #2d2820;border-radius:6px;padding:0.7rem 0.85rem;font-family:'SF Mono','Fira Code',monospace;font-size:0.68rem;line-height:1.65;overflow:hidden;">
+      <div class="dim" style="font-size:1.2vw;margin-bottom:0.4rem;">What the model actually emits (Claude / Anthropic format)</div>
+      <div style="background:#111009;border:1px solid #2d2820;border-radius:6px;padding:0.7rem 0.85rem;font-family:'SF Mono','Fira Code',monospace;font-size:1.1vw;line-height:1.65;overflow:hidden;">
         <div style="color:#9a9188;">// model streams these tokens verbatim</div>
         <div style="color:#e6a84a;">&lt;function_calls&gt;</div>
         <div style="padding-left:1em;color:#e6a84a;">&lt;invoke name=<span style="color:#6bb99a;">"run_shell"</span>&gt;</div>
@@ -359,7 +359,7 @@ h3 {
         <div style="color:#e6a84a;">&lt;/function_results&gt;</div>
         <div style="margin-top:0.5rem;color:#9a9188;">// model continues generating…</div>
       </div>
-      <div style="font-size:0.72rem;color:#9a9188;margin-top:0.5rem;">Every model has its own token dialect. The harness parses it and runs the real command. The model never executes — it only <em>describes</em>.</div>
+      <div style="font-size:1.2vw;color:#9a9188;margin-top:0.5rem;">Every model has its own token dialect. The harness parses it and runs the real command. The model never executes — it only <em>describes</em>.</div>
     </div>
   </div>
 </div>
@@ -376,31 +376,31 @@ h3 {
     <div style="display:flex;flex-direction:column;gap:0.5rem;">
       <!-- Harness box -->
       <div style="border:2px solid #6bb99a;border-radius:8px;padding:0.65rem 0.9rem;background:#6bb99a10;">
-        <div style="color:#6bb99a;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Harness &nbsp;·&nbsp; runs on your machine</div>
+        <div style="color:#6bb99a;font-size:1.2vw;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Harness &nbsp;·&nbsp; runs on your machine</div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" style="color:#ede8e0;text-decoration:none;">Claude Code</a></span>
-          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:#ede8e0;text-decoration:none;">pi</a></span>
-          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://cursor.com" target="_blank" style="color:#ede8e0;text-decoration:none;">Cursor</a></span>
-          <span style="font-size:0.78rem;color:#9a9188;border:1px dashed #6bb99a66;border-radius:5px;padding:0.15rem 0.5rem;">Pi…</span>
+          <span style="font-size:1.2vw;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" style="color:#ede8e0;text-decoration:none;">Claude Code</a></span>
+          <span style="font-size:1.2vw;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:#ede8e0;text-decoration:none;">pi</a></span>
+          <span style="font-size:1.2vw;color:#ede8e0;border:1px solid #6bb99a;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://cursor.com" target="_blank" style="color:#ede8e0;text-decoration:none;">Cursor</a></span>
+          <span style="font-size:1.2vw;color:#9a9188;border:1px dashed #6bb99a66;border-radius:5px;padding:0.15rem 0.5rem;">Pi…</span>
         </div>
-        <div style="color:#9a9188;font-size:0.72rem;margin-top:0.4rem;">Reads codebase · manages context · executes tools locally · provides UI</div>
+        <div style="color:#9a9188;font-size:1.2vw;margin-top:0.4rem;">Reads codebase · manages context · executes tools locally · provides UI</div>
       </div>
       <!-- Provider box -->
       <div style="border:2px solid #df6b52;border-radius:8px;padding:0.65rem 0.9rem;background:#df6b5210;">
-        <div style="color:#df6b52;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Provider &nbsp;·&nbsp; remote GPU cluster</div>
+        <div style="color:#df6b52;font-size:1.2vw;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Provider &nbsp;·&nbsp; remote GPU cluster</div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">Anthropic</span>
-          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">OpenAI</span>
-          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">Google</span>
-          <span style="font-size:0.78rem;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://io.net" target="_blank" style="color:#ede8e0;text-decoration:none;">io.net</a></span>
-          <span style="font-size:0.78rem;color:#9a9188;border:1px dashed #df6b5266;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://openrouter.ai" target="_blank" style="color:#9a9188;text-decoration:none;">via OpenRouter…</a></span>
+          <span style="font-size:1.2vw;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">Anthropic</span>
+          <span style="font-size:1.2vw;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">OpenAI</span>
+          <span style="font-size:1.2vw;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;">Google</span>
+          <span style="font-size:1.2vw;color:#ede8e0;border:1px solid #df6b52;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://io.net" target="_blank" style="color:#ede8e0;text-decoration:none;">io.net</a></span>
+          <span style="font-size:1.2vw;color:#9a9188;border:1px dashed #df6b5266;border-radius:5px;padding:0.15rem 0.5rem;"><a href="https://openrouter.ai" target="_blank" style="color:#9a9188;text-decoration:none;">via OpenRouter…</a></span>
         </div>
-        <div style="color:#9a9188;font-size:0.72rem;margin-top:0.4rem;">Runs model inference · prices vary 3–5× for the same model across providers</div>
+        <div style="color:#9a9188;font-size:1.2vw;margin-top:0.4rem;">Runs model inference · prices vary 3–5× for the same model across providers</div>
       </div>
     </div>
 
     <!-- Right: the loop steps -->
-    <div style="font-size:0.78rem;line-height:1;">
+    <div style="font-size:1.2vw;line-height:1;">
       <div style="display:flex;flex-direction:column;gap:0.32rem;">
         <div style="display:flex;gap:0.55rem;align-items:flex-start;">
           <div style="color:#6bb99a;font-weight:700;min-width:1.2em;">1</div>
@@ -427,7 +427,7 @@ h3 {
           <div><span style="color:#ede8e0;">Model continues</span> <span style="color:#9a9188;">— uses result to reason, calls more tools or replies</span></div>
         </div>
         <div style="padding-left:1.75em;color:#2d2820;font-size:1rem;">↺</div>
-        <div style="padding-left:1.75em;color:#9a9188;font-size:0.72rem;">…repeats until task done or human takes over</div>
+        <div style="padding-left:1.75em;color:#9a9188;font-size:1.2vw;">…repeats until task done or human takes over</div>
       </div>
     </div>
   </div>
@@ -531,11 +531,11 @@ h3 {
 <div class="slide" data-slide="8">
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>Planning Before Code</h2>
-  <p class="subtitle">Agree on <em>what</em> to build before any code is written. <a href="https://openspec.dev" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">OpenSpec</a> is a lightweight framework that structures this as a folder of Markdown artifacts. <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" style="color:var(--accent);text-decoration:none;font-size:0.85em;">GitHub (41k ⭐) →</a></p>
+  <p class="subtitle">Agree on <em>what</em> to build before any code is written. <a href="https://openspec.dev" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">OpenSpec</a> is a lightweight framework that structures this as a folder of Markdown artifacts. <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" style="color:var(--accent);text-decoration:none;font-size:1em;">GitHub (41k ⭐) →</a></p>
   <div class="two-col" style="gap:3vw;margin-top:1rem;width:100%;">
     <div class="col">
       <h3>The workflow</h3>
-      <div class="diagram" style="margin-top:0.5rem;font-size:0.8rem;line-height:1.75;">
+      <div class="diagram" style="margin-top:0.5rem;font-size:1.3vw;line-height:1.75;">
         <div><span class="label">/opsx:propose dark-mode</span></div>
         <div class="dim" style="padding-left:1em">→ openspec/changes/dark-mode/</div>
         <div class="dim" style="padding-left:2em">proposal.md  ← why &amp; what</div>
@@ -550,7 +550,7 @@ h3 {
     </div>
     <div class="col">
       <h3 style="color:var(--accent2)">specs/dark-mode-spec.md</h3>
-      <div class="diagram" style="margin-top:0.5rem;font-size:0.76rem;line-height:1.65;">
+      <div class="diagram" style="margin-top:0.5rem;font-size:1.2vw;line-height:1.65;">
         <div><span class="label">### Requirement: Theme toggle</span></div>
         <div class="dim">- SHALL render a toggle in the top-right header</div>
         <div class="dim">- SHALL apply the new theme within 50ms</div>
@@ -577,7 +577,7 @@ h3 {
 
   <div style="width:100%;width:100%;">
     <!-- Header row -->
-    <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.4rem;font-size:0.75rem;color:#9a9188;text-align:center;">
+    <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.4rem;font-size:1.2vw;color:#9a9188;text-align:center;">
       <div></div>
       <div>Ideation &amp;<br>Planning</div>
       <div>Coding</div>
@@ -588,35 +588,35 @@ h3 {
 
     <!-- Before row -->
     <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;margin-bottom:0.5rem;">
-      <div style="font-size:0.78rem;color:#9a9188;font-weight:600;">Before agents</div>
-      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
+      <div style="font-size:1.2vw;color:#9a9188;font-weight:600;">Before agents</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#9a9188;">~normal</div>
       <!-- Coding was the bottleneck — highlighted orange, tallest -->
-      <div style="background:#df6b5222;border:2px solid #df6b52;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#df6b52;font-weight:600;">⚠ bottleneck</div>
-      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
-      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
-      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
+      <div style="background:#df6b5222;border:2px solid #df6b52;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#df6b52;font-weight:600;">⚠ bottleneck</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#9a9188;">~normal</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#9a9188;">~normal</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#9a9188;">~normal</div>
     </div>
 
     <!-- After row -->
     <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;margin-bottom:0.8rem;">
-      <div style="font-size:0.78rem;color:#9a9188;font-weight:600;">With agents now</div>
-      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
+      <div style="font-size:1.2vw;color:#9a9188;font-weight:600;">With agents now</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#9a9188;">~normal</div>
       <!-- Coding got fast — green, small -->
-      <div style="background:#6bb99a22;border:1px solid #6bb99a;border-radius:4px;height:1.1rem;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#6bb99a;">~2× faster</div>
+      <div style="background:#6bb99a22;border:1px solid #6bb99a;border-radius:4px;height:1.1rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#6bb99a;">~2× faster</div>
       <!-- Validation is the new bottleneck -->
-      <div style="background:#df6b5222;border:2px solid #df6b52;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#df6b52;font-weight:600;">⚠ bottleneck</div>
-      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
-      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9a9188;">~normal</div>
+      <div style="background:#df6b5222;border:2px solid #df6b52;border-radius:4px;height:3.2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#df6b52;font-weight:600;">⚠ bottleneck</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#9a9188;">~normal</div>
+      <div style="background:#2d2820;border-radius:4px;height:2rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#9a9188;">~normal</div>
     </div>
 
     <!-- Agent effectiveness row -->
     <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;align-items:center;">
-      <div style="font-size:0.78rem;color:#9a9188;font-weight:600;">Agent<br>effectiveness</div>
-      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#e6a84a;">partial</div>
-      <div style="background:#6bb99a33;border:1px solid #6bb99a;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#6bb99a;font-weight:600;">strong ✓</div>
-      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#e6a84a;">emerging</div>
-      <div style="background:#2d2820;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#9a9188;">early</div>
-      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:#e6a84a;">partial</div>
+      <div style="font-size:1.2vw;color:#9a9188;font-weight:600;">Agent<br>effectiveness</div>
+      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#e6a84a;">partial</div>
+      <div style="background:#6bb99a33;border:1px solid #6bb99a;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#6bb99a;font-weight:600;">strong ✓</div>
+      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#e6a84a;">emerging</div>
+      <div style="background:#2d2820;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#9a9188;">early</div>
+      <div style="background:#e6a84a18;border:1px solid #e6a84a66;border-radius:4px;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:1.2vw;color:#e6a84a;">partial</div>
     </div>
   </div>
 
@@ -673,7 +673,7 @@ h3 {
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>Dev Meets Ops</h2>
   <p class="subtitle">A production error becomes a GitHub Issue becomes a PR — mostly without a human kicking it off.</p>
-  <div class="diagram" style="width:100%;margin-top:1rem;font-size:0.88rem;line-height:1.9;">
+  <div class="diagram" style="width:100%;margin-top:1rem;font-size:1.3vw;line-height:1.9;">
     <div><span class="label">1. Discover:</span> <span class="dim">ES|QL CATEGORIZE clusters millions of logs → ranked error patterns</span></div>
     <div><span class="label">2. Investigate:</span> <span class="dim">Triage Agent runs a protocol-driven investigation — queries telemetry, checks git history, correlates stack traces</span></div>
     <div><span class="label">3. File:</span> <span class="dim">Agent creates a GitHub Issue with root cause, affected versions, and a suggested fix</span></div>
@@ -697,56 +697,56 @@ h3 {
 <div class="slide" data-slide="12">
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>The GitHub Switchboard</h2>
-  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate. <span style="color:#e6a84a;font-size:0.85em;">Blue = agent-powered</span></p>
+  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate. <span style="color:#e6a84a;font-size:1em;">Blue = agent-powered</span></p>
   <div style="width:100%;width:100%;">
     <!-- Top row: inputs -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
-      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:0.88rem;color:#ede8e0;text-align:center;">New Idea</div>
-      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:0.88rem;color:#ede8e0;text-align:center;">User Feedback</div>
-      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:0.88rem;color:#ede8e0;text-align:center;">Production Error</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:1.3vw;color:#ede8e0;text-align:center;">New Idea</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:1.3vw;color:#ede8e0;text-align:center;">User Feedback</div>
+      <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:1.3vw;color:#ede8e0;text-align:center;">Production Error</div>
     </div>
     <!-- Agent tags under inputs -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
-      <div style="font-size:0.7rem;color:#e6a84a;text-align:center;">↓ Planning Agent scopes the work</div>
-      <div style="font-size:0.7rem;color:#e6a84a;text-align:center;">↓ Planning Agent scopes the work</div>
-      <div style="font-size:0.7rem;color:#e6a84a;text-align:center;">↓ Triage Agent clusters logs, creates Issue</div>
+      <div style="font-size:1.2vw;color:#e6a84a;text-align:center;">↓ Planning Agent scopes the work</div>
+      <div style="font-size:1.2vw;color:#e6a84a;text-align:center;">↓ Planning Agent scopes the work</div>
+      <div style="font-size:1.2vw;color:#e6a84a;text-align:center;">↓ Triage Agent clusters logs, creates Issue</div>
     </div>
     <!-- Converging arrows -->
-    <div style="text-align:center;color:#9a9188;font-size:0.9rem;line-height:1;margin-bottom:0.25rem;">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
+    <div style="text-align:center;color:#9a9188;font-size:1.4vw;line-height:1;margin-bottom:0.25rem;">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
     <!-- Main flow + human involvement side by side -->
     <div style="display:grid;grid-template-columns:1fr auto;gap:1.2rem;align-items:start;">
       <!-- Flow column -->
       <div style="display:flex;flex-direction:column;gap:0.25rem;align-items:stretch;">
         <div style="padding:0.65rem 1rem;border:2px solid #ede8e0;border-radius:8px;color:#ede8e0;font-weight:600;text-align:center;">
-          GitHub Issue <span style="font-size:0.72rem;font-weight:400;color:#9a9188;">&nbsp;— auto-created or manual</span>
+          GitHub Issue <span style="font-size:1.2vw;font-weight:400;color:#9a9188;">&nbsp;— auto-created or manual</span>
         </div>
-        <div style="text-align:center;color:#e6a84a;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="text-align:center;color:#e6a84a;font-size:1.4vw;line-height:1.4;">↓</div>
         <div style="padding:0.65rem 1rem;border:1px solid #e6a84a;border-radius:8px;color:#ede8e0;text-align:center;">
           Planning / Spec
-          <div style="font-size:0.7rem;color:#e6a84a;margin-top:0.2rem;">agent drafts spec → human approves</div>
+          <div style="font-size:1.2vw;color:#e6a84a;margin-top:0.2rem;">agent drafts spec → human approves</div>
         </div>
-        <div style="text-align:center;color:#e6a84a;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="text-align:center;color:#e6a84a;font-size:1.4vw;line-height:1.4;">↓</div>
         <div style="padding:0.65rem 1rem;border:1px solid #e6a84a;border-radius:8px;color:#e6a84a;font-weight:600;text-align:center;">Coding Agent</div>
-        <div style="text-align:center;color:#e6a84a;font-size:0.9rem;line-height:1.4;">↓</div>
+        <div style="text-align:center;color:#e6a84a;font-size:1.4vw;line-height:1.4;">↓</div>
         <div style="padding:0.65rem 1rem;border:2px solid #ede8e0;border-radius:8px;color:#ede8e0;font-weight:600;text-align:center;">Pull Request</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.25rem;">
-          <div style="padding:0.35rem 0.6rem;border:1px solid #e6a84a;border-radius:6px;font-size:0.72rem;color:#e6a84a;text-align:center;"><a href="https://macroscope.app" target="_blank" style="color:#e6a84a;text-decoration:none;">Macroscope</a> — static review</div>
-          <div style="padding:0.35rem 0.6rem;border:1px solid #e6a84a;border-radius:6px;font-size:0.72rem;color:#e6a84a;text-align:center;">Exploratory Tests — dynamic</div>
+          <div style="padding:0.35rem 0.6rem;border:1px solid #e6a84a;border-radius:6px;font-size:1.2vw;color:#e6a84a;text-align:center;"><a href="https://macroscope.app" target="_blank" style="color:#e6a84a;text-decoration:none;">Macroscope</a> — static review</div>
+          <div style="padding:0.35rem 0.6rem;border:1px solid #e6a84a;border-radius:6px;font-size:1.2vw;color:#e6a84a;text-align:center;">Exploratory Tests — dynamic</div>
         </div>
       </div>
       <!-- Human involvement column -->
       <div style="display:flex;flex-direction:column;gap:0.3rem;width:195px;padding-top:3.6rem;">
-        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:0.75rem;">
+        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:1.2vw;">
           <div style="color:#ede8e0;font-weight:600;">Human: very involved</div>
           <div style="color:#9a9188;">Architecture &amp; design</div>
         </div>
         <div style="height:0.8rem;"></div>
-        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:0.75rem;">
+        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:1.2vw;">
           <div style="color:#ede8e0;font-weight:600;">Human: less involved</div>
           <div style="color:#9a9188;">Review &amp; steer</div>
         </div>
         <div style="height:0.8rem;"></div>
-        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:0.75rem;">
+        <div style="padding:0.5rem 0.7rem;border:1px solid #ede8e0;border-radius:6px;font-size:1.2vw;">
           <div style="color:#ede8e0;font-weight:600;">Human: quality gate</div>
           <div style="color:#9a9188;">Approve or reject</div>
         </div>
@@ -811,7 +811,7 @@ h3 {
   <div class="two-col" style="grid-template-columns: 1fr 1fr 1fr; gap: 2vw; margin-top:1rem;">
     <div class="col">
       <h3><a href="https://openrouter.ai/anthropic/claude-opus-4-6" target="_blank" style="color:var(--warn);text-decoration:none;">Opus 4.6</a></h3>
-      <div style="font-size:0.8rem;color:#df6b52;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$5 in / $25 out per 1M tokens</div>
+      <div style="font-size:1.3vw;color:#df6b52;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$5 in / $25 out per 1M tokens</div>
       <ul class="points orange">
         <li>Most capable model right now</li>
         <li>Architecture &amp; planning</li>
@@ -820,7 +820,7 @@ h3 {
     </div>
     <div class="col">
       <h3><a href="https://openrouter.ai/z-ai/glm-5.1" target="_blank" style="color:var(--accent2);text-decoration:none;">GLM 5.1</a></h3>
-      <div style="font-size:0.8rem;color:#6bb99a;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.95 in / $3.15 out per 1M tokens</div>
+      <div style="font-size:1.3vw;color:#6bb99a;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.95 in / $3.15 out per 1M tokens</div>
       <ul class="points green">
         <li>Open-source (Z.ai)</li>
         <li>Coding &amp; triage</li>
@@ -829,7 +829,7 @@ h3 {
     </div>
     <div class="col">
       <h3><a href="https://openrouter.ai/stepfun/step-3.5-flash" target="_blank" style="color:var(--accent);text-decoration:none;">Step 3.5 Flash</a></h3>
-      <div style="font-size:0.8rem;color:#e6a84a;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.10 in / $0.30 out per 1M tokens</div>
+      <div style="font-size:1.3vw;color:#e6a84a;margin-bottom:0.6rem;font-family:'SF Mono','Fira Code',monospace;">$0.10 in / $0.30 out per 1M tokens</div>
       <ul class="points">
         <li>~50× cheaper than Opus on output</li>
         <li>Great for high-volume loops</li>
