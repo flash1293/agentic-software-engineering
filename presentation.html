@@ -249,7 +249,7 @@ h3 {
 <!-- About Me -->
 <div class="slide" data-slide="2">
   <h2>About Me</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:820px;margin-top:1rem;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;width:100%;margin-top:1rem;">
     <div>
       <h3 style="margin-bottom:0.5rem;">Joe Reuter</h3>
       <div class="dim" style="margin-bottom:1.2rem;line-height:1.8;">Tech Lead · <a href="https://elastic.co" target="_blank" style="color:var(--accent);text-decoration:none;">Elastic</a></div>
@@ -277,7 +277,7 @@ h3 {
   <span class="part-label">Foundation — Step 1 of 3</span>
   <h2>It Started as Next-Token Prediction</h2>
   <p class="subtitle">The model picks the most likely next token and repeats. Pattern matching over enormous text corpora. One token ≈ ¾ of a word.</p>
-  <div class="diagram" style="max-width:720px">
+  <div class="diagram" style="width:100%">
     <div style="font-size:0.85rem;line-height:1.9;">
       <div><span class="dim">Context so far:</span> <span style="color:#ede8e0">"The Eiffel Tower is located in "</span></div>
       <div style="margin-top:0.8rem"><span class="dim">Model samples the <strong style="color:#ede8e0">next single token</strong>:</span></div>
@@ -304,7 +304,7 @@ h3 {
   <span class="part-label">Foundation — Step 2 of 3</span>
   <h2>Add Thinking: Reason Before Answering</h2>
   <p class="subtitle">Chain-of-thought prompting (and o1-style reasoning) gives the model space to work through a problem before committing to an answer. This changed things substantially.</p>
-  <div class="diagram" style="max-width:680px">
+  <div class="diagram" style="width:100%">
     <div><span class="dim">Task:</span>  <span style="color:#ede8e0">"This test fails intermittently. Why?"</span></div>
     <div style="margin-top:0.8rem"><span class="label">&lt;thinking&gt;</span></div>
     <div style="padding-left:1.2rem; margin-top:0.3rem; color:#9a9188; font-size:0.9em; line-height:1.6">
@@ -323,7 +323,7 @@ h3 {
   <span class="part-label">Foundation — Step 3 of 3</span>
   <h2>Add Tool Calls: Act in the World</h2>
   <p class="subtitle">The model can pause mid-response, call a tool, and continue from where it left off. Text in, real actions out.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;max-width:920px;margin-top:0.8rem;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;width:100%;margin-top:0.8rem;">
     <!-- Left: conceptual loop -->
     <div class="diagram" style="font-size:0.82rem;line-height:1.8;">
       <div class="dim" style="font-size:0.75rem;margin-bottom:0.4rem;">Conceptual flow</div>
@@ -370,7 +370,7 @@ h3 {
   <h2>Harness → Provider: The Loop</h2>
   <p class="subtitle">The harness (<a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:var(--accent2);text-decoration:none;">pi</a>, Claude Code…) orchestrates a tight request/response loop with the model provider. The model never touches your machine — it only describes what to do.</p>
 
-  <div style="max-width:860px;margin-top:0.9rem;display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;">
+  <div style="width:100%;margin-top:0.9rem;display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;">
 
     <!-- Left: the two actors -->
     <div style="display:flex;flex-direction:column;gap:0.5rem;">
@@ -449,7 +449,7 @@ h3 {
   <span class="part-label">Part 1 — The New Reality</span>
   <h2>Feedback Loop Length Is Everything</h2>
   <p class="subtitle" style="margin-bottom:0.6rem">METR tracks how long a model can work unsupervised on a research task — doubling roughly every 7 months. (<a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" style="color:var(--accent);text-decoration:none;">Kwa et al. 2025</a>, <a href="https://metr.org" target="_blank" style="color:var(--accent);text-decoration:none;">metr.org</a>)</p>
-  <div style="width:100%;max-width:860px;">
+  <div style="width:100%;width:100%;">
     <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
       <rect x="80" y="10" width="660" height="260" rx="4" fill="#1c1915" stroke="#2d2820"/>
       <line x1="80" y1="270" x2="740" y2="270" stroke="#2d2820" stroke-dasharray="3,4"/>
@@ -532,7 +532,7 @@ h3 {
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>Planning Before Code</h2>
   <p class="subtitle">Agree on <em>what</em> to build before any code is written. <a href="https://openspec.dev" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">OpenSpec</a> is a lightweight framework that structures this as a folder of Markdown artifacts. <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" style="color:var(--accent);text-decoration:none;font-size:0.85em;">GitHub (41k ⭐) →</a></p>
-  <div class="two-col" style="gap:3vw;margin-top:1rem;max-width:900px;">
+  <div class="two-col" style="gap:3vw;margin-top:1rem;width:100%;">
     <div class="col">
       <h3>The workflow</h3>
       <div class="diagram" style="margin-top:0.5rem;font-size:0.8rem;line-height:1.75;">
@@ -575,7 +575,7 @@ h3 {
   <h2>The Bottleneck Moved</h2>
   <p class="subtitle" style="margin-bottom:1rem">Agents cut coding time roughly in half, which surfaced the next constraint. Reviewing and validating is now the slow part.</p>
 
-  <div style="width:100%;max-width:820px;">
+  <div style="width:100%;width:100%;">
     <!-- Header row -->
     <div style="display:grid;grid-template-columns:130px 1fr 1fr 1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.4rem;font-size:0.75rem;color:#9a9188;text-align:center;">
       <div></div>
@@ -673,7 +673,7 @@ h3 {
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>Dev Meets Ops</h2>
   <p class="subtitle">A production error becomes a GitHub Issue becomes a PR — mostly without a human kicking it off.</p>
-  <div class="diagram" style="max-width:780px;margin-top:1rem;font-size:0.88rem;line-height:1.9;">
+  <div class="diagram" style="width:100%;margin-top:1rem;font-size:0.88rem;line-height:1.9;">
     <div><span class="label">1. Discover:</span> <span class="dim">ES|QL CATEGORIZE clusters millions of logs → ranked error patterns</span></div>
     <div><span class="label">2. Investigate:</span> <span class="dim">Triage Agent runs a protocol-driven investigation — queries telemetry, checks git history, correlates stack traces</span></div>
     <div><span class="label">3. File:</span> <span class="dim">Agent creates a GitHub Issue with root cause, affected versions, and a suggested fix</span></div>
@@ -698,7 +698,7 @@ h3 {
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>The GitHub Switchboard</h2>
   <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate. <span style="color:#e6a84a;font-size:0.85em;">Blue = agent-powered</span></p>
-  <div style="width:100%;max-width:900px;">
+  <div style="width:100%;width:100%;">
     <!-- Top row: inputs -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
       <div style="padding:0.55rem 0.8rem;border:1px solid #9a9188;border-radius:8px;font-size:0.88rem;color:#ede8e0;text-align:center;">New Idea</div>
@@ -762,7 +762,7 @@ h3 {
   <span class="part-label">Part 3 — The Stack</span>
   <h2>You Are the Orchestration Layer</h2>
   <p class="subtitle">Each agent works through its own think→act→observe loop. You move between them: kick off a task, check progress, correct course.</p>
-  <div class="two-col" style="gap:3vw;margin-top:1.2rem;max-width:860px;">
+  <div class="two-col" style="gap:3vw;margin-top:1.2rem;width:100%;">
     <div class="col">
       <h3>How it works for me today</h3>
       <ul class="points" style="margin-top:0.5rem;">
@@ -904,7 +904,7 @@ h3 {
   <p class="subtitle" style="margin-bottom:1rem">When observability and development run on the same agent loop, the SDLC closes itself.</p>
 
   <!-- Closed-loop diagram -->
-  <div style="width:100%;max-width:860px;margin:0 auto;">
+  <div style="width:100%;width:100%;margin:0 auto;">
     <svg viewBox="0 0 860 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
       <defs>
         <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
