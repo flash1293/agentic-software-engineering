@@ -689,7 +689,7 @@ h3 {
   <h2>Triage Agent — Example Output</h2>
   <p class="subtitle">The actual GitHub Issue filed autonomously — root cause, affected versions, and a fix suggestion, all included.</p>
   <div style="display:flex;justify-content:center;margin-top:0.6rem;">
-    <img src="error-report.webp" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #2d2820;" alt="Error triage report screenshot">
+    <img src="error-report.png" style="max-height:62vh;max-width:100%;border-radius:8px;border:1px solid #2d2820;" alt="Error triage report screenshot">
   </div>
 </div>
 
@@ -697,7 +697,7 @@ h3 {
 <div class="slide" data-slide="12">
   <span class="part-label">Part 2 — The Lifecycle</span>
   <h2>The GitHub Switchboard</h2>
-  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate. <span style="color:#e6a84a;font-size:1em;">Blue = agent-powered</span></p>
+  <p class="subtitle" style="margin-bottom:0.8rem">GitHub is the coordination layer. Agents plug into every stage — but humans set direction and hold the quality gate.</p>
   <div style="width:100%;width:100%;">
     <!-- Top row: inputs -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:0.25rem;">
@@ -767,7 +767,6 @@ h3 {
       <h3>How it works for me today</h3>
       <ul class="points" style="margin-top:0.5rem;">
         <li><a href="https://github.com/badlogic/pi-mono" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">pi</a> runs in each TMux pane — one agent per task/branch</li>
-        <li><a href="https://github.com/tmux/tmux" target="_blank" style="color:var(--accent2);font-weight:600;text-decoration:none;">TMux</a> is the session manager: persistent, switchable, parallel</li>
         <li>Assign Agent A a 30-min task → switch pane → assign Agent B → come back, review, correct → repeat</li>
         <li>For smaller tasks &amp; adjustments: harness runs in a <strong style="color:var(--accent)">GitHub Action</strong> — ephemeral cloud worker, not tied to my machine. Produces a PR, I review async.</li>
       </ul>
